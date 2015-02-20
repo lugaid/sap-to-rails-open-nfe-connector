@@ -15,7 +15,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 public class XMLValidator {
-	public static List<String> validateXml(String xsd, String xml) throws Exception {
+	public static List<String> validateXml(String xsd, String xml)
+			throws ParserConfigurationException, SAXException, IOException {
 		XmlErrorHandler errorHandler = new XmlErrorHandler();
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

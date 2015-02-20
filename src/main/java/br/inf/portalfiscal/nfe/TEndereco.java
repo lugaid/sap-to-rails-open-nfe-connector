@@ -1,8 +1,8 @@
 //
-// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.7 
+// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.11 
 // Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2014.09.09 às 01:15:55 PM BRT 
+// Gerado em: 2015.02.20 às 03:36:49 PM BRST 
 //
 
 
@@ -11,6 +11,7 @@ package br.inf.portalfiscal.nfe;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -22,81 +23,81 @@ import javax.xml.bind.annotation.XmlType;
  * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
- * &lt;complexType name="TEndereco">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="xLgr">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString">
- *               &lt;maxLength value="60"/>
- *               &lt;minLength value="2"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="nro">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString">
- *               &lt;maxLength value="60"/>
- *               &lt;minLength value="1"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="xCpl" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString">
- *               &lt;maxLength value="60"/>
- *               &lt;minLength value="1"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="xBairro">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString">
- *               &lt;maxLength value="60"/>
- *               &lt;minLength value="2"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="cMun" type="{http://www.portalfiscal.inf.br/nfe}TCodMunIBGE"/>
- *         &lt;element name="xMun">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString">
- *               &lt;maxLength value="60"/>
- *               &lt;minLength value="2"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="UF" type="{http://www.portalfiscal.inf.br/nfe}TUf"/>
- *         &lt;element name="CEP" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;whiteSpace value="preserve"/>
- *               &lt;pattern value="[0-9]{8}"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="cPais" type="{http://www.portalfiscal.inf.br/nfe}Tpais" minOccurs="0"/>
- *         &lt;element name="xPais" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString">
- *               &lt;maxLength value="60"/>
- *               &lt;minLength value="2"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="fone" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;whiteSpace value="preserve"/>
- *               &lt;pattern value="[0-9]{6,14}"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="TEndereco"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="xLgr"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString"&gt;
+ *               &lt;maxLength value="60"/&gt;
+ *               &lt;minLength value="2"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="nro"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString"&gt;
+ *               &lt;maxLength value="60"/&gt;
+ *               &lt;minLength value="1"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="xCpl" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString"&gt;
+ *               &lt;maxLength value="60"/&gt;
+ *               &lt;minLength value="1"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="xBairro"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString"&gt;
+ *               &lt;maxLength value="60"/&gt;
+ *               &lt;minLength value="2"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="cMun" type="{http://www.portalfiscal.inf.br/nfe}TCodMunIBGE"/&gt;
+ *         &lt;element name="xMun"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString"&gt;
+ *               &lt;maxLength value="60"/&gt;
+ *               &lt;minLength value="2"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="UF" type="{http://www.portalfiscal.inf.br/nfe}TUf"/&gt;
+ *         &lt;element name="CEP" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *               &lt;whiteSpace value="preserve"/&gt;
+ *               &lt;pattern value="[0-9]{8}"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="cPais" type="{http://www.portalfiscal.inf.br/nfe}Tpais" minOccurs="0"/&gt;
+ *         &lt;element name="xPais" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.portalfiscal.inf.br/nfe}TString"&gt;
+ *               &lt;maxLength value="60"/&gt;
+ *               &lt;minLength value="2"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="fone" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *               &lt;whiteSpace value="preserve"/&gt;
+ *               &lt;pattern value="[0-9]{6,14}"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -129,6 +130,7 @@ public class TEndereco {
     @XmlElement(required = true)
     protected String xMun;
     @XmlElement(name = "UF", required = true)
+    @XmlSchemaType(name = "string")
     protected TUf uf;
     @XmlElement(name = "CEP")
     protected String cep;

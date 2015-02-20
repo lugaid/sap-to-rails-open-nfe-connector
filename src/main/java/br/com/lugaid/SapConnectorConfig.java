@@ -3,34 +3,44 @@ package br.com.lugaid;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.TimeZone;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Singleton class to load conf\config.properties configurations.
+ */
 public class SapConnectorConfig {
 	private static final String CONFIG_FILE = "conf\\config.properties";
-	private static final String TIME_ZONE_PAT = "^(\\+|\\-)(\\d{2}):(\\d{2})$";
 
 	private static Logger logger = LoggerFactory
 			.getLogger(SapConnectorConfig.class);
 	private static SapConnectorConfig sapConnectorConfig;
 
 	private String jcoConfigName;
-	private String timeZone;
+	private TimeZone timeZone;
 	private int jcoTraceLevel;
 
-	protected SapConnectorConfig(String jcoConfigName, String timeZone,
+	private SapConnectorConfig(String jcoConfigName, String timeZone,
 			int jcoTraceLevel) {
-		super();
 		setJcoConfigName(jcoConfigName);
-		setTimeZone(timeZone);
+		setTimeZone(TimeZone.getTimeZone(timeZone));
 		setJcoTraceLevel(jcoTraceLevel);
 	}
 
+	/**
+	 * Return the name of the JCo config files.
+	 * @return name of the JCo config files as String
+	 */
 	public String getJcoConfigName() {
 		return jcoConfigName;
 	}
 
+	/**
+	 * Set the name of the JCo config files.
+	 * @param jcoConfigName Name of the JCo config files
+	 */
 	public void setJcoConfigName(String jcoConfigName) {
 		if (jcoConfigName == null || jcoConfigName.trim().isEmpty()) {
 			throw new IllegalArgumentException(
@@ -40,24 +50,39 @@ public class SapConnectorConfig {
 		this.jcoConfigName = jcoConfigName;
 	}
 
-	public String getTimeZone() {
+	/**
+	 * Returns the time zone to be used into SAP timestamp conversion
+	 * @return time zone as TimeZone
+	 */
+	public TimeZone getTimeZone() {
 		return timeZone;
 	}
 
-	public void setTimeZone(String timeZone) {
-		if (timeZone == null || !timeZone.matches(TIME_ZONE_PAT)) {
+	/**
+	 * Set the time zone to be used into SAP timestamp conversion
+	 * @param timeZone Time zone to be used into SAP timestamp conversion
+	 */
+	public void setTimeZone(TimeZone timeZone) {
+		if (timeZone == null) {
 			throw new IllegalArgumentException(
-					"timeZone config property is obligatory and must matches pattern "
-							.concat(TIME_ZONE_PAT));
+					"timeZone config property is obligatory and must be a valid ID for TimeZone class");
 		}
 
 		this.timeZone = timeZone;
 	}
 
+	/**
+	 * Returns the trace level for JCo.
+	 * @return trace level as int.
+	 */
 	public int getJcoTraceLevel() {
 		return jcoTraceLevel;
 	}
 
+	/**
+	 * Set the trace level for JCo.
+	 * @param jcoTraceLevel Trace level.
+	 */
 	public void setJcoTraceLevel(int jcoTraceLevel) {
 		if (jcoTraceLevel < 0 || jcoTraceLevel > 10) {
 			throw new IllegalArgumentException(
@@ -67,14 +92,23 @@ public class SapConnectorConfig {
 		this.jcoTraceLevel = jcoTraceLevel;
 	}
 
+	/**
+	 * Get singleton instance of SapConnectorConfig
+	 * @return Singleton instance as SapConnectorConfig
+	 */
 	public static SapConnectorConfig getInstance() {
 		if (sapConnectorConfig == null) {
-			return loadConfigFile();
+			sapConnectorConfig = loadConfigFile();
+			return sapConnectorConfig;
 		} else {
 			return sapConnectorConfig;
 		}
 	}
 
+	/**
+	 * Load config file and define a new instance of SapConnectorConfig
+	 * @return New instance of SapConnectorConfig.
+	 */
 	private static SapConnectorConfig loadConfigFile() {
 		Properties properties = new Properties();
 		try {

@@ -1,8 +1,8 @@
 //
-// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.7 
+// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.11 
 // Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2014.09.09 às 01:15:55 PM BRT 
+// Gerado em: 2015.02.20 às 03:36:49 PM BRST 
 //
 
 
@@ -41,6 +41,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TIpi }
+     * 
+     */
+    public TIpi createTIpi() {
+        return new TIpi();
+    }
+
+    /**
      * Create an instance of {@link TRetEnviNFe }
      * 
      */
@@ -54,14 +62,6 @@ public class ObjectFactory {
      */
     public TProtNFe createTProtNFe() {
         return new TProtNFe();
-    }
-
-    /**
-     * Create an instance of {@link TIpi }
-     * 
-     */
-    public TIpi createTIpi() {
-        return new TIpi();
     }
 
     /**
@@ -233,59 +233,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TNfeProc }
-     * 
-     */
-    public TNfeProc createTNfeProc() {
-        return new TNfeProc();
-    }
-
-    /**
-     * Create an instance of {@link TLocal }
-     * 
-     */
-    public TLocal createTLocal() {
-        return new TLocal();
-    }
-
-    /**
      * Create an instance of {@link TEnviNFe }
      * 
      */
     public TEnviNFe createTEnviNFe() {
         return new TEnviNFe();
-    }
-
-    /**
-     * Create an instance of {@link TEnderEmi }
-     * 
-     */
-    public TEnderEmi createTEnderEmi() {
-        return new TEnderEmi();
-    }
-
-    /**
-     * Create an instance of {@link TEndereco }
-     * 
-     */
-    public TEndereco createTEndereco() {
-        return new TEndereco();
-    }
-
-    /**
-     * Create an instance of {@link TRetConsReciNFe }
-     * 
-     */
-    public TRetConsReciNFe createTRetConsReciNFe() {
-        return new TRetConsReciNFe();
-    }
-
-    /**
-     * Create an instance of {@link TVeiculo }
-     * 
-     */
-    public TVeiculo createTVeiculo() {
-        return new TVeiculo();
     }
 
     /**
@@ -297,19 +249,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TRetEnviNFe.InfRec }
+     * Create an instance of {@link TRetConsReciNFe }
      * 
      */
-    public TRetEnviNFe.InfRec createTRetEnviNFeInfRec() {
-        return new TRetEnviNFe.InfRec();
+    public TRetConsReciNFe createTRetConsReciNFe() {
+        return new TRetConsReciNFe();
     }
 
     /**
-     * Create an instance of {@link TProtNFe.InfProt }
+     * Create an instance of {@link TNfeProc }
      * 
      */
-    public TProtNFe.InfProt createTProtNFeInfProt() {
-        return new TProtNFe.InfProt();
+    public TNfeProc createTNfeProc() {
+        return new TNfeProc();
+    }
+
+    /**
+     * Create an instance of {@link TEndereco }
+     * 
+     */
+    public TEndereco createTEndereco() {
+        return new TEndereco();
+    }
+
+    /**
+     * Create an instance of {@link TEnderEmi }
+     * 
+     */
+    public TEnderEmi createTEnderEmi() {
+        return new TEnderEmi();
+    }
+
+    /**
+     * Create an instance of {@link TLocal }
+     * 
+     */
+    public TLocal createTLocal() {
+        return new TLocal();
+    }
+
+    /**
+     * Create an instance of {@link TVeiculo }
+     * 
+     */
+    public TVeiculo createTVeiculo() {
+        return new TVeiculo();
     }
 
     /**
@@ -326,6 +310,22 @@ public class ObjectFactory {
      */
     public TIpi.IPINT createTIpiIPINT() {
         return new TIpi.IPINT();
+    }
+
+    /**
+     * Create an instance of {@link TRetEnviNFe.InfRec }
+     * 
+     */
+    public TRetEnviNFe.InfRec createTRetEnviNFeInfRec() {
+        return new TRetEnviNFe.InfRec();
+    }
+
+    /**
+     * Create an instance of {@link TProtNFe.InfProt }
+     * 
+     */
+    public TProtNFe.InfProt createTProtNFeInfProt() {
+        return new TProtNFe.InfProt();
     }
 
     /**

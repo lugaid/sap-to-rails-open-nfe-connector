@@ -33,10 +33,7 @@ public class TNfeParser {
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 			// Change xml declaration to remove standalone="yes"
-			jaxbMarshaller.setProperty("com.sun.xml.bind.xmlDeclaration",
-					Boolean.FALSE);
-			jaxbMarshaller.setProperty("com.sun.xml.bind.xmlHeaders",
-					"<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FRAGMENT, false);
 
 			// Set encoding
 			jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
@@ -45,16 +42,16 @@ public class TNfeParser {
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			StringWriter sw = new StringWriter();
 			jaxbMarshaller.marshal(tNFe, sw);
-			String formattedXml = removeNS2fromXML(sw.toString());
+			String formattedXml = removeNSfromXML(sw.toString());
 			logger.debug("XML generated: \n {}", formattedXml);
 
 			// create unformatted xml to dont send to open nfe
 			sw = new StringWriter();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, false);
 			jaxbMarshaller.marshal(tNFe, sw);
-			String xml = removeNS2fromXML(sw.toString());
-			logger.debug("XML final: \n {}", xml);
-			
+			String xml = removeNSfromXML(sw.toString());
+			logger.info("XML final: \n {}", xml);
+
 			return xml;
 		} catch (JAXBException e) {
 			e.printStackTrace();
@@ -62,7 +59,7 @@ public class TNfeParser {
 		return null;
 	}
 
-	private static String removeNS2fromXML(String inXml) {
+	private static String removeNSfromXML(String inXml) {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
 		factory.setNamespaceAware(false);

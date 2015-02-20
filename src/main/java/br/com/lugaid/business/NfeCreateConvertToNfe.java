@@ -1,9 +1,12 @@
 package br.com.lugaid.business;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,7 +72,8 @@ public class NfeCreateConvertToNfe {
 	@SuppressWarnings("unused")
 	private NfeCreateImport nfeCreateImport;
 	// Configs for SAP conversor
-	private SapConnectorConfig sapConnectorConfig;
+	private SapConnectorConfig sapConnectorConfig = SapConnectorConfig
+			.getInstance();
 
 	// NF-e Avulsa
 	private IsNfeAvulsa isNfeAvulsa;
@@ -165,16 +169,10 @@ public class NfeCreateConvertToNfe {
 	// Volume Transport - Block X
 	private List<ItNfeVol> itNfeVols;
 
-	// Data Time pattern SAP and replace regex to UTC format.
-	private static final String DT_TM_SAP_PAT = "^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})$";
-	private static final String DT_TM_NFE_REP = "$1-$2-$3T$4:$5:$6";
-
 	private static final SimpleDateFormat DT_FORMAT = new SimpleDateFormat(
 			"yyyy-MM-dd");
 
-	public NfeCreateConvertToNfe(SapConnectorConfig sapConnectorConfig,
-			NfeCreateImport nfeCreateImport) {
-		this.sapConnectorConfig = sapConnectorConfig;
+	public NfeCreateConvertToNfe(NfeCreateImport nfeCreateImport) {
 		this.nfeCreateImport = nfeCreateImport;
 
 		// to make easy to use NfeCreateImport attributes inside conversor
@@ -294,7 +292,7 @@ public class NfeCreateConvertToNfe {
 		ide.setNNF(String.valueOf(Long.valueOf(isNfeIde.getNNf())));
 		ide.setDhEmi(sapDateTime2nfeDateTime(isNfeIde.getDhEmi()));
 
-		if (isNfeIde.getDhSaiEnt().matches(DT_TM_SAP_PAT)) {
+		if (!isNfeIde.getDhSaiEnt().trim().isEmpty()) {
 			ide.setDhSaiEnt(sapDateTime2nfeDateTime(isNfeIde.getDhSaiEnt()));
 		}
 
@@ -1666,6 +1664,7 @@ public class NfeCreateConvertToNfe {
 		ItNfeImpostoPis itNfeImpostoPis = getItNfeImpostoPis(pisRef);
 
 		if (itNfeImpostoPis != null) {
+			String strCst = String.format("%02d", itNfeImpostoPis.getCst());
 			PIS pis = new PIS();
 
 			if (itNfeImpostoPis.getCst() == 1 || itNfeImpostoPis.getCst() == 2) {
@@ -1673,7 +1672,7 @@ public class NfeCreateConvertToNfe {
 
 				PISAliq pisAliq = new PISAliq();
 
-				pisAliq.setCST(itNfeImpostoPis.getCst().toString());
+				pisAliq.setCST(strCst);
 				pisAliq.setVBC(itNfeImpostoPis.getVBc().toString());
 				pisAliq.setPPIS(itNfeImpostoPis.getPPis().toString());
 				pisAliq.setVPIS(itNfeImpostoPis.getVPis().toString());
@@ -1684,7 +1683,7 @@ public class NfeCreateConvertToNfe {
 
 				PISQtde pisQtde = new PISQtde();
 
-				pisQtde.setCST(itNfeImpostoPis.getCst().toString());
+				pisQtde.setCST(strCst);
 				pisQtde.setQBCProd(itNfeImpostoPis.getQBcprod().toString());
 				pisQtde.setVAliqProd(itNfeImpostoPis.getVAliqProd().toString());
 				pisQtde.setVPIS(itNfeImpostoPis.getVPis().toString());
@@ -1696,7 +1695,7 @@ public class NfeCreateConvertToNfe {
 
 				PISNT pisNT = new PISNT();
 
-				pisNT.setCST(itNfeImpostoPis.getCst().toString());
+				pisNT.setCST(strCst);
 
 				pis.setPISNT(pisNT);
 			} else if (itNfeImpostoPis
@@ -1708,7 +1707,7 @@ public class NfeCreateConvertToNfe {
 
 				PISOutr pisOutr = new PISOutr();
 
-				pisOutr.setCST(itNfeImpostoPis.getCst().toString());
+				pisOutr.setCST(strCst);
 
 				if (isGTZero(itNfeImpostoPis.getVBc())
 						|| isGTZero(itNfeImpostoPis.getPPis())) {
@@ -2306,12 +2305,29 @@ public class NfeCreateConvertToNfe {
 
 			Vol vol = new Vol();
 
-			vol.setQVol(itNfeVol.getQVol().toString());
-			vol.setEsp(itNfeVol.getEsp());
-			vol.setMarca(itNfeVol.getMarca());
-			vol.setNVol(itNfeVol.getNVol());
-			vol.setPesoL(itNfeVol.getPesoL().toString());
-			vol.setPesoB(itNfeVol.getPesoB().toString());
+			if (isGTZero(itNfeVol.getQVol())) {
+				vol.setQVol(itNfeVol.getQVol().toString());
+			}
+
+			if (!itNfeVol.getEsp().trim().isEmpty()) {
+				vol.setEsp(itNfeVol.getEsp());
+			}
+
+			if (!itNfeVol.getMarca().trim().isEmpty()) {
+				vol.setMarca(itNfeVol.getMarca());
+			}
+
+			if (!itNfeVol.getNVol().trim().isEmpty()) {
+				vol.setNVol(itNfeVol.getNVol());
+			}
+
+			if (isGTZero(itNfeVol.getPesoL())) {
+				vol.setPesoL(itNfeVol.getPesoL().toString());
+			}
+
+			if (isGTZero(itNfeVol.getPesoB())) {
+				vol.setPesoB(itNfeVol.getPesoB().toString());
+			}
 
 			List<Lacres> lacres = buildLacres(itNfeVol.getTextIdLacres());
 			if (lacres.size() > 0) {
@@ -2490,7 +2506,8 @@ public class NfeCreateConvertToNfe {
 			infAdic.setInfAdFisco(isNfeInfadic.getInfAdFisco());
 		}
 
-		if (!isNfeInfadic.getInfCpl().trim().isEmpty()) {
+		if (isNfeInfadic.getInfCpl() != null
+				&& !isNfeInfadic.getInfCpl().trim().isEmpty()) {
 			infAdic.setInfCpl(isNfeInfadic.getInfCpl());
 		}
 
@@ -3131,10 +3148,38 @@ public class NfeCreateConvertToNfe {
 	}
 
 	private String sapDateTime2nfeDateTime(String sapTime) {
-		return sapTime.replaceAll(DT_TM_SAP_PAT, DT_TM_NFE_REP).concat(
-				sapConnectorConfig.getTimeZone());
+		SimpleDateFormat sapDateTimeFormat = new SimpleDateFormat(
+				"yyyyMMddHHmmss");
+		SimpleDateFormat xmlDateTimeFormat = new SimpleDateFormat(
+				"yyyy-MM-dd'T'HH:mm:ssXXX");
+		Date date = null;
+
+		logger.info("Converting SAP UTC timestamp to NFe timestamp {}.",
+				sapTime);
+
+		try {
+			// convert string from SAP to Date java object
+			// SAP always returns datetime in UTC
+			sapDateTimeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+			date = sapDateTimeFormat.parse(sapTime);
+
+			// convert to parameterized timezone
+			xmlDateTimeFormat.setTimeZone(sapConnectorConfig.getTimeZone());
+
+			logger.info("SAP UTC timestamp {} converted to NFe timestamp {}.",
+					sapTime, xmlDateTimeFormat.format(date));
+
+			return xmlDateTimeFormat.format(date);
+		} catch (ParseException e) {
+			logger.error(
+					"Error converting SAP UTC timestamp to NFe timestamp {}.",
+					e.getMessage());
+			logger.debug("Stack trace ", e);
+
+			return null;
+		}
 	}
-	
+
 	private boolean isGTZero(BigDecimal bd) {
 		return bd.compareTo(BigDecimal.ZERO) == 1;
 	}

@@ -1,45 +1,40 @@
 package br.com.lugaid;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import br.com.lugaid.business.NfeCreateConvertToNfe;
 import br.com.lugaid.handlers.NfeCreateHandler;
 import br.com.lugaid.handlers.TIDHandler;
 import br.com.lugaid.listeners.ServerStateChangeListener;
 import br.com.lugaid.listeners.ServerThrowableListener;
-import br.com.lugaid.params.NfeCreateImport;
-import br.com.lugaid.params.NfeCreateImport.ItNfePartner;
-import br.com.lugaid.threads.NfeCreateConverterThread;
-import br.com.lugaid.threads.NfeXmlInCallerThread;
-
 import com.sap.conn.jco.JCo;
 import com.sap.conn.jco.JCoDestination;
 import com.sap.conn.jco.JCoDestinationManager;
 import com.sap.conn.jco.JCoException;
 import com.sap.conn.jco.server.DefaultServerHandlerFactory;
+import com.sap.conn.jco.server.DefaultServerHandlerFactory.FunctionHandlerFactory;
 import com.sap.conn.jco.server.JCoServer;
 import com.sap.conn.jco.server.JCoServerFactory;
 
+/**
+ * Singleton class to connect to SAP and start JCoServer with their default
+ * handlers and listeners and also define the JCoDestination to be able to call
+ * SAP RFC.
+ */
 public class SapConnector implements Runnable {
 	private static Logger logger = LoggerFactory.getLogger(SapConnector.class);
+
 	private static SapConnector sapConnector;
+	private SapConnectorConfig sapConnectorConfig = SapConnectorConfig
+			.getInstance();
+	private JCoServer jCoServer;
+	private JCoDestination jCodestination;
 
-	private SapConnectorConfig sapConnectorConfig;
-
-	protected SapConnector(SapConnectorConfig sapConnectorConfig) {
-		this.sapConnectorConfig = sapConnectorConfig;
+	private SapConnector() {
 	}
 
 	public static SapConnector getInstance() {
 		if (sapConnector == null) {
-			return new SapConnector(SapConnectorConfig.getInstance());
+			return new SapConnector();
 		} else {
 			return sapConnector;
 		}
@@ -47,73 +42,34 @@ public class SapConnector implements Runnable {
 
 	@Override
 	public void run() {
-		logger.info("Start running SapConnector.");
+		logger.info("Running SapConnector.");
 
-		test();
+		defineJCoServer();
 
-		// start thread to converter
-//		JCoServer jCoServer = getJCoServer();
-//		
-//		JCoDestination destination = getDestination(jCoServer);
-//
-//		NfeXmlInCallerThread nfeXmlInCallerThread = NfeXmlInCallerThread
-//				.getInstance(destination, sapConnectorConfig);
-//		nfeXmlInCallerThread.start();
-//
-//		NfeCreateHandler.getInstance(jCoServer, sapConnectorConfig, nfeXmlInCallerThread)
-//				.startHandler();
-//
-//		// this method lock this thread take care with this
-//		jCoServer.start();
+		defineJCodestination();
+
+		startDefaultHandlersAndListeners();
+
+		startBusinessHandlers();
+
+		// Start the server
+		jCoServer.start();
 	}
 
-	private void test() {
+	/**
+	 * Define JCoServer based on configuration file.
+	 */
+	private void defineJCoServer() {
 		try {
-			FileInputStream fileIn = new FileInputStream(
-					"C:/temp/NfeCreateImport.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			NfeCreateImport nfe = (NfeCreateImport) in.readObject();
-			in.close();
-			fileIn.close();
-			
-			for(ItNfePartner  pt: nfe.getItNfePartners()) {
-				pt.setNro("10");
-			}
-
-			// start thread to converter/
-			JCoServer jCoServer = getJCoServer();
-			JCoDestination destination = getDestination(jCoServer);
-
-			NfeXmlInCallerThread nfeXmlInCallerThread = NfeXmlInCallerThread
-					.getInstance(destination, sapConnectorConfig);
-			nfeXmlInCallerThread.start();
-
-			NfeCreateConverterThread converterThread = NfeCreateConverterThread
-					.getInstance(sapConnectorConfig, nfeXmlInCallerThread);
-
-			converterThread.start();
-			converterThread.add(nfe);
-
-		} catch (IOException i) {
-			i.printStackTrace();
-			return;
-		} catch (ClassNotFoundException c) {
-			c.printStackTrace();
-			return;
-		}
-	}
-
-	private JCoServer getJCoServer() {
-		try {
-			logger.info("Starting connection to SAP.");
+			logger.info("Starting JCoServer.");
 
 			// Set tracelevel and path to write log files
 			JCo.setTrace(sapConnectorConfig.getJcoTraceLevel(), "logs/");
 
-			JCoServer jCoServer = JCoServerFactory.getServer(sapConnectorConfig
+			jCoServer = JCoServerFactory.getServer(sapConnectorConfig
 					.getJcoConfigName());
 
-			logger.info("Connection succesfully started to SAP.");
+			logger.info("JCoServer succesfully started.");
 			logger.info("==============================================================");
 			logger.info("|                   SAP connection attributes");
 			logger.info("| Host: {}", jCoServer.getGatewayHost());
@@ -122,39 +78,37 @@ public class SapConnector implements Runnable {
 			logger.info("| RepositoryDestination: {}",
 					jCoServer.getRepositoryDestination());
 			logger.info("==============================================================");
-
-			startDefaultHandlersAndListeners(jCoServer);
-
-			return jCoServer;
 		} catch (JCoException e) {
-			logger.error("Error on get SAP server ".concat(sapConnectorConfig
+			logger.error("Error on get JCoServer ".concat(sapConnectorConfig
 					.getJcoConfigName()));
 			logger.debug("Stack trace ", e);
-			throw new IllegalStateException("SAP server error exiting system.",
+			throw new IllegalStateException("JCoServer error exiting system.",
 					e);
 		}
 	}
 
-	private JCoDestination getDestination(JCoServer jCoServer) {
+	/**
+	 * Define JCodestination based on configuration file.
+	 */
+	private void defineJCodestination() {
 		try {
-			logger.info("Starting destination to SAP.");
+			logger.info("Definning destination to SAP.");
 
-			JCoDestination destination = JCoDestinationManager
-					.getDestination(jCoServer.getRepositoryDestination());
+			jCodestination = JCoDestinationManager.getDestination(jCoServer
+					.getRepositoryDestination());
 
 			logger.info("Destination started to SAP.");
 			logger.info("==============================================================");
 			logger.info("|                   SAP connection attributes");
-			logger.info("| Client: {}", destination.getClient());
-			logger.info("| User: {}", destination.getUser());
-			logger.info("| Language: {}", destination.getLanguage());
-			logger.info("| Sysnr: {}", destination.getSystemNumber());
-			logger.info("| Host: {}", destination.getApplicationServerHost());
+			logger.info("| Client: {}", jCodestination.getClient());
+			logger.info("| User: {}", jCodestination.getUser());
+			logger.info("| Language: {}", jCodestination.getLanguage());
+			logger.info("| Sysnr: {}", jCodestination.getSystemNumber());
+			logger.info("| Host: {}", jCodestination.getApplicationServerHost());
 			logger.info("| RepositoryDestination: {}",
 					jCoServer.getRepositoryDestination());
 			logger.info("==============================================================");
 
-			return destination;
 		} catch (JCoException e) {
 			logger.error("Error on get SAP server {}.",
 					jCoServer.getRepositoryDestination());
@@ -164,16 +118,37 @@ public class SapConnector implements Runnable {
 		}
 	}
 
-	private void startDefaultHandlersAndListeners(JCoServer jCoServer) {
-		jCoServer
-				.setCallHandlerFactory(new DefaultServerHandlerFactory.FunctionHandlerFactory());
-
-		// Error, exception and state change listener
+	/**
+	 * Start default handlers and listeners
+	 */
+	private void startDefaultHandlersAndListeners() {
 		jCoServer.addServerErrorListener(new ServerThrowableListener());
+
 		jCoServer.addServerExceptionListener(new ServerThrowableListener());
+
 		jCoServer
 				.addServerStateChangedListener(new ServerStateChangeListener());
 
 		jCoServer.setTIDHandler(new TIDHandler());
+	}
+
+	/**
+	 * Start business handlers and callers
+	 */
+	private void startBusinessHandlers() {
+		// Define FunctionHandlerFactory
+		FunctionHandlerFactory functionHandlerFactory = new DefaultServerHandlerFactory.FunctionHandlerFactory();
+
+		// Start J_1BNFE_OUTNFE_CREATE handler
+		logger.info("Starting handler to function module {}",
+				NfeCreateHandler.getFunctionModuleName());
+
+		NfeCreateHandler nfeCreateHandler = NfeCreateHandler.getInstance();
+
+		functionHandlerFactory.registerHandler(
+				NfeCreateHandler.getFunctionModuleName(), nfeCreateHandler);
+
+		// Set HandlerFactory into Server
+		jCoServer.setCallHandlerFactory(functionHandlerFactory);
 	}
 }

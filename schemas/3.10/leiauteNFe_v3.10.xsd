@@ -1022,6 +1022,8 @@ Formato ”CFOP9999”.</xs:documentation>
 																		<xs:enumeration value="8"/>
 																		<xs:enumeration value="9"/>
 																		<xs:enumeration value="10"/>
+																		<xs:enumeration value="11"/>
+																		<xs:enumeration value="12"/>
 																	</xs:restriction>
 																</xs:simpleType>
 															</xs:element>
@@ -3169,7 +3171,7 @@ Operação interestadual para consumidor final com partilha do ICMS  devido na o
 														</xs:element>
 													</xs:sequence>
 													<xs:sequence>
-														<xs:element name="IPI" type="TIpi" minOccurs="0"/>
+ 													    <xs:element name="IPI" type="TIpi" minOccurs="0"/>
 														<xs:element name="ISSQN">
 															<xs:annotation>
 																<xs:documentation>ISSQN</xs:documentation>

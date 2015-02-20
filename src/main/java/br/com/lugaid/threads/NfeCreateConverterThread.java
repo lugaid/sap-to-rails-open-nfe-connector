@@ -7,9 +7,7 @@ import java.util.Queue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.com.lugaid.SapConnectorConfig;
 import br.com.lugaid.business.NfeCreateConvertToNfe;
-import br.com.lugaid.enuns.ConnectorErrorType;
 import br.com.lugaid.params.NfeCreateImport;
 import br.com.lugaid.parser.TNfeParser;
 import br.com.lugaid.validator.XMLValidator;
@@ -19,23 +17,15 @@ public class NfeCreateConverterThread extends Thread {
 	private static Logger logger = LoggerFactory
 			.getLogger(NfeCreateConverterThread.class);
 	private Queue<NfeCreateImport> dataQueue = new LinkedList<>();
-	private SapConnectorConfig sapConnectorConfig;
 	private boolean isStarted = false;
 	private static NfeCreateConverterThread converterThread;
-	private NfeXmlInCallerThread nfeXmlInCallerThread;
 
-	private NfeCreateConverterThread(SapConnectorConfig sapConnectorConfig,
-			NfeXmlInCallerThread nfeXmlInCallerThread) {
-		this.sapConnectorConfig = sapConnectorConfig;
-		this.nfeXmlInCallerThread = nfeXmlInCallerThread;
+	private NfeCreateConverterThread() {
 	}
 
-	public static NfeCreateConverterThread getInstance(
-			SapConnectorConfig sapConnectorConfig,
-			NfeXmlInCallerThread nfeXmlInCallerThread) {
+	public static NfeCreateConverterThread getInstance() {
 		if (converterThread == null) {
-			converterThread = new NfeCreateConverterThread(sapConnectorConfig,
-					nfeXmlInCallerThread);
+			converterThread = new NfeCreateConverterThread();
 		}
 
 		return converterThread;
@@ -62,7 +52,11 @@ public class NfeCreateConverterThread extends Thread {
 	}
 
 	public synchronized void add(NfeCreateImport nfe) {
-		logger.info("Adding NfeCreateImport to convert.");
+		if (isStarted == false) {
+			this.start();
+		}
+		
+		logger.debug("NfeCreateImport data {}.", nfe.toString());
 
 		dataQueue.add(nfe);
 
@@ -81,7 +75,7 @@ public class NfeCreateConverterThread extends Thread {
 				// Convert to TNFe type
 				try {
 					NfeCreateConvertToNfe convertToNfe = new NfeCreateConvertToNfe(
-							sapConnectorConfig, nfe);
+							nfe);
 					TNFe tnfe = convertToNfe.convertToTNFe();
 
 					// Parse TNFe to string
@@ -90,17 +84,13 @@ public class NfeCreateConverterThread extends Thread {
 					// Validate nfe
 					List<String> errors = XMLValidator
 							.validateXml(
-									"C:\\Users\\emerson\\workspace\\sap-to-rails-open-nfe-connector\\schemas\\3.10\\nfe_v3.10.xsd",
+									"D:\\Projetos Java\\sap-to-rails-open-nfe-connector\\schemas\\3.10\\nfe_v3.10.xsd",
 									nfeXml);
-					
+
 					System.out.println(errors);
 				} catch (Exception e) {
 					logger.error("Exception on conversion RFC parameters to NF-e.");
 					logger.debug("Stack trace ", e);
-
-					nfeXmlInCallerThread.addConnectorError(nfe.getIsNfeHeader()
-							.getDocnum(),
-							ConnectorErrorType.NFE_CONVERSION_EXCEPTION);
 				}
 
 				dataQueue.remove(nfe);
