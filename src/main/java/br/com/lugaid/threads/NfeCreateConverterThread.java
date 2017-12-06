@@ -1,7 +1,7 @@
 package br.com.lugaid.threads;
 
+import java.io.File;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 import org.slf4j.Logger;
@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import br.com.lugaid.business.NfeCreateConvertToNfe;
 import br.com.lugaid.params.NfeCreateImport;
 import br.com.lugaid.parser.TNfeParser;
-import br.com.lugaid.validator.XMLValidator;
+import br.com.lugaid.validator.JAXBValidator;
 import br.inf.portalfiscal.nfe.TNFe;
 
 public class NfeCreateConverterThread extends Thread {
@@ -78,16 +78,11 @@ public class NfeCreateConverterThread extends Thread {
 							nfe);
 					TNFe tnfe = convertToNfe.convertToTNFe();
 
+					//Validate TNFE
+					System.err.println(JAXBValidator.validate(new File(".\\schemas\\3.10\\nfe_v3.10.xsd"), tnfe));
+					
 					// Parse TNFe to string
 					String nfeXml = TNfeParser.parse(tnfe);
-
-					// Validate nfe
-					List<String> errors = XMLValidator
-							.validateXml(
-									"D:\\Projetos Java\\sap-to-rails-open-nfe-connector\\schemas\\3.10\\nfe_v3.10.xsd",
-									nfeXml);
-
-					System.out.println(errors);
 				} catch (Exception e) {
 					logger.error("Exception on conversion RFC parameters to NF-e.");
 					logger.debug("Stack trace ", e);

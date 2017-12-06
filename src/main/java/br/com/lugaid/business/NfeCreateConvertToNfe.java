@@ -12,57 +12,51 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.com.lugaid.SapConnectorConfig;
-import br.inf.portalfiscal.nfe.*;
-import br.inf.portalfiscal.nfe.TIpi.*;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.*;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.*;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.COFINS.*;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.ICMS.*;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.ISSQN;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.PIS.*;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Cana.ForDia;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Cobr.Dup;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Cobr.Fat;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.ImpostoDevol;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.ImpostoDevol.IPI;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.Arma;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.Comb;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.Comb.CIDE;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.DI;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.DI.Adi;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.DetExport;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.DetExport.ExportInd;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.Med;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.VeicProd;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide.NFref.RefNF;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.InfAdic.ObsCont;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.InfAdic.ObsFisco;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.InfAdic.ProcRef;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Total;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Avulsa;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Dest;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Emit;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide.NFref;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide.NFref.RefECF;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide.NFref.RefNFP;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Pag.Card;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Total.ICMSTot;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Total.ISSQNtot;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Total.RetTrib;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.RetTransp;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Transporta;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol.Lacres;
 import br.com.lugaid.exception.CofinsException;
 import br.com.lugaid.exception.IcmsException;
 import br.com.lugaid.exception.IpiException;
 import br.com.lugaid.exception.PisException;
 import br.com.lugaid.params.NfeCreateImport;
 import br.com.lugaid.params.NfeCreateImport.*;
+import br.inf.portalfiscal.nfe.*;
+import br.inf.portalfiscal.nfe.TIpi.*;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.*;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Cana.ForDia;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Cobr.Dup;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Cobr.Fat;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.ImpostoDevol;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.*;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.COFINS.*;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.ICMS.*;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.PIS.*;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.ImpostoDevol.IPI;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.Arma;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.Comb;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.DI;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.DetExport;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.Med;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.VeicProd;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.Comb.CIDE;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.DI.Adi;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod.DetExport.ExportInd;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide.NFref;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide.NFref.RefECF;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide.NFref.RefNF;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide.NFref.RefNFP;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.InfAdic.ObsCont;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.InfAdic.ObsFisco;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.InfAdic.ProcRef;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Pag.Card;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Total.ICMSTot;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Total.ISSQNtot;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Total.RetTrib;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.RetTransp;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Transporta;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol.Lacres;
 
 public class NfeCreateConvertToNfe {
 	private static Logger logger = LoggerFactory
@@ -1385,7 +1379,7 @@ public class NfeCreateConvertToNfe {
 				}
 
 				icms.setICMS90(icms90);
-			} else if (itNfeImpostoIcms.getCsosn().equals(101)) {
+			} else if (itNfeImpostoIcms.getCsosn().equals(101L)) {
 				logger.info("ICMS defined as ICMSSN101 for ICMS_REF {}.",
 						icmsRef);
 
@@ -1409,7 +1403,7 @@ public class NfeCreateConvertToNfe {
 				icmssn102.setCSOSN(itNfeImpostoIcms.getCsosn().toString());
 
 				icms.setICMSSN102(icmssn102);
-			} else if (itNfeImpostoIcms.getCsosn().equals(201)) {
+			} else if (itNfeImpostoIcms.getCsosn().equals(201L)) {
 				logger.info("ICMS defined as ICMSSN201 for ICMS_REF {}.",
 						icmsRef);
 
@@ -1463,7 +1457,7 @@ public class NfeCreateConvertToNfe {
 				icmssn202.setVICMSST(itNfeImpostoIcms.getVIcmsst().toString());
 
 				icms.setICMSSN202(icmssn202);
-			} else if (itNfeImpostoIcms.getCsosn().equals(500)) {
+			} else if (itNfeImpostoIcms.getCsosn().equals(500L)) {
 				logger.info("ICMS defined as ICMSSN500 for ICMS_REF {}.",
 						icmsRef);
 
@@ -1481,7 +1475,7 @@ public class NfeCreateConvertToNfe {
 				}
 
 				icms.setICMSSN500(icmssn500);
-			} else if (itNfeImpostoIcms.getCsosn().equals(900)) {
+			} else if (itNfeImpostoIcms.getCsosn().equals(900L)) {
 				logger.info("ICMS defined as ICMSSN900 for ICMS_REF {}.",
 						icmsRef);
 

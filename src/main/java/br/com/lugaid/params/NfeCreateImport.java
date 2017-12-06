@@ -63,6 +63,8 @@ public class NfeCreateImport implements Serializable {
 	private List<ItNfeImpostoCofinsst> itNfeImpostoCofinssts;
 	// ICMS and ICMS ST Tax - Block N
 	private List<ItNfeImpostoIcms> itNfeImpostoIcmss;
+	// Partilha ICMS - Block NA
+	private List<ItNfeImpostoIcmsufdest> itNfeImpostoIcmsufdests;
 	// Import tax - Block P
 	private List<ItNfeImpostoIi> itNfeImpostoIis;
 	// IPI Tax - Block
@@ -106,37 +108,23 @@ public class NfeCreateImport implements Serializable {
 	// General Flag
 	private String ivResend;
 
-	public NfeCreateImport(IsNfeAvulsa isNfeAvulsa, IsNfeCana isNfeCana,
-			IsNfeCompra isNfeCompra, IsNfeExporta isNfeExporta,
-			IsNfeFat isNfeFat, IsNfeHeader isNfeHeader,
-			IsNfeIcmstot isNfeIcmstot, IsNfeIde isNfeIde,
-			IsNfeInfadic isNfeInfadic, IsNfeIssqntot isNfeIssqntot,
-			IsNfePartnerIds isNfePartnerIds, IsNfeRettrib isNfeRettrib,
-			IsNfeTransp isNfeTransp, List<ItNfeAutxml> itNfeAutxmls,
-			List<ItNfeCanaFordia> itNfeCanaFordias, List<ItNfeDet> itNfeDets,
-			List<ItNfeDetImposto> itNfeDetImpostos,
-			List<ItNfeDetProd> itNfeDetProds, List<ItNfeDiAdi> itNfeDiAdis,
-			List<ItNfeDup> itNfeDups, List<ItNfeExt1> itNfeExt1s,
-			List<ItNfeExt2> itNfeExt2s,
-			List<ItNfeImpostoCofins> itNfeImpostoCofinss,
-			List<ItNfeImpostoCofinsst> itNfeImpostoCofinssts,
-			List<ItNfeImpostoIcms> itNfeImpostoIcmss,
-			List<ItNfeImpostoIi> itNfeImpostoIis,
-			List<ItNfeImpostoIpi> itNfeImpostoIpis,
-			List<ItNfeImpostoIssqn> itNfeImpostoIssqns,
-			List<ItNfeImpostoPis> itNfeImpostoPiss,
-			List<ItNfeImpostoPisst> itNfeImpostoPissts,
-			List<ItNfeNfref> itNfeNfrefs, List<ItNfePag> itNfePags,
-			List<ItNfePartner> itNfePartners, List<ItNfeProcref> itNfeProcrefs,
-			List<ItNfeProdArma> itNfeProdArmas,
-			List<ItNfeProdComb> itNfeProdCombs,
-			List<ItNfeProdDetexport> itNfeProdDetexports,
-			List<ItNfeProdDi> itNfeProdDis, List<ItNfeProdMed> itNfeProdMeds,
-			List<ItNfeProdNrecopi> itNfeProdNrecopis,
-			List<ItNfeProdVeicprod> itNfeProdVeicprods,
-			List<ItNfeReboque> itNfeReboques, List<ItNfeText> itNfeTexts,
-			List<ItNfeValue> itNfeValues, List<ItNfeVol> itNfeVols,
-			String ivResend) {
+	public NfeCreateImport(IsNfeAvulsa isNfeAvulsa, IsNfeCana isNfeCana, IsNfeCompra isNfeCompra,
+			IsNfeExporta isNfeExporta, IsNfeFat isNfeFat, IsNfeHeader isNfeHeader, IsNfeIcmstot isNfeIcmstot,
+			IsNfeIde isNfeIde, IsNfeInfadic isNfeInfadic, IsNfeIssqntot isNfeIssqntot, IsNfePartnerIds isNfePartnerIds,
+			IsNfeRettrib isNfeRettrib, IsNfeTransp isNfeTransp, List<ItNfeAutxml> itNfeAutxmls,
+			List<ItNfeCanaFordia> itNfeCanaFordias, List<ItNfeDet> itNfeDets, List<ItNfeDetImposto> itNfeDetImpostos,
+			List<ItNfeDetProd> itNfeDetProds, List<ItNfeDiAdi> itNfeDiAdis, List<ItNfeDup> itNfeDups,
+			List<ItNfeExt1> itNfeExt1s, List<ItNfeExt2> itNfeExt2s, List<ItNfeImpostoCofins> itNfeImpostoCofinss,
+			List<ItNfeImpostoCofinsst> itNfeImpostoCofinssts, List<ItNfeImpostoIcms> itNfeImpostoIcmss,
+			List<ItNfeImpostoIcmsufdest> itNfeImpostoIcmsufdests, List<ItNfeImpostoIi> itNfeImpostoIis,
+			List<ItNfeImpostoIpi> itNfeImpostoIpis, List<ItNfeImpostoIssqn> itNfeImpostoIssqns,
+			List<ItNfeImpostoPis> itNfeImpostoPiss, List<ItNfeImpostoPisst> itNfeImpostoPissts,
+			List<ItNfeNfref> itNfeNfrefs, List<ItNfePag> itNfePags, List<ItNfePartner> itNfePartners,
+			List<ItNfeProcref> itNfeProcrefs, List<ItNfeProdArma> itNfeProdArmas, List<ItNfeProdComb> itNfeProdCombs,
+			List<ItNfeProdDetexport> itNfeProdDetexports, List<ItNfeProdDi> itNfeProdDis,
+			List<ItNfeProdMed> itNfeProdMeds, List<ItNfeProdNrecopi> itNfeProdNrecopis,
+			List<ItNfeProdVeicprod> itNfeProdVeicprods, List<ItNfeReboque> itNfeReboques, List<ItNfeText> itNfeTexts,
+			List<ItNfeValue> itNfeValues, List<ItNfeVol> itNfeVols, String ivResend) {
 		this.isNfeAvulsa = isNfeAvulsa;
 		this.isNfeCana = isNfeCana;
 		this.isNfeCompra = isNfeCompra;
@@ -162,6 +150,7 @@ public class NfeCreateImport implements Serializable {
 		this.itNfeImpostoCofinss = itNfeImpostoCofinss;
 		this.itNfeImpostoCofinssts = itNfeImpostoCofinssts;
 		this.itNfeImpostoIcmss = itNfeImpostoIcmss;
+		this.itNfeImpostoIcmsufdests = itNfeImpostoIcmsufdests;
 		this.itNfeImpostoIis = itNfeImpostoIis;
 		this.itNfeImpostoIpis = itNfeImpostoIpis;
 		this.itNfeImpostoIssqns = itNfeImpostoIssqns;
@@ -365,8 +354,7 @@ public class NfeCreateImport implements Serializable {
 		return this.itNfeExt2s;
 	}
 
-	public void setItNfeImpostoCofinss(
-			List<ItNfeImpostoCofins> itNfeImpostoCofinss) {
+	public void setItNfeImpostoCofinss(List<ItNfeImpostoCofins> itNfeImpostoCofinss) {
 		this.itNfeImpostoCofinss = itNfeImpostoCofinss;
 	}
 
@@ -374,8 +362,7 @@ public class NfeCreateImport implements Serializable {
 		return this.itNfeImpostoCofinss;
 	}
 
-	public void setItNfeImpostoCofinssts(
-			List<ItNfeImpostoCofinsst> itNfeImpostoCofinssts) {
+	public void setItNfeImpostoCofinssts(List<ItNfeImpostoCofinsst> itNfeImpostoCofinssts) {
 		this.itNfeImpostoCofinssts = itNfeImpostoCofinssts;
 	}
 
@@ -389,6 +376,14 @@ public class NfeCreateImport implements Serializable {
 
 	public List<ItNfeImpostoIcms> getItNfeImpostoIcmss() {
 		return this.itNfeImpostoIcmss;
+	}
+
+	public void setItNfeImpostoIcmsufdests(List<ItNfeImpostoIcmsufdest> itNfeImpostoIcmsufdests) {
+		this.itNfeImpostoIcmsufdests = itNfeImpostoIcmsufdests;
+	}
+
+	public List<ItNfeImpostoIcmsufdest> getItNfeImpostoIcmsufdests() {
+		return this.itNfeImpostoIcmsufdests;
 	}
 
 	public void setItNfeImpostoIis(List<ItNfeImpostoIi> itNfeImpostoIis) {
@@ -479,8 +474,7 @@ public class NfeCreateImport implements Serializable {
 		return this.itNfeProdCombs;
 	}
 
-	public void setItNfeProdDetexports(
-			List<ItNfeProdDetexport> itNfeProdDetexports) {
+	public void setItNfeProdDetexports(List<ItNfeProdDetexport> itNfeProdDetexports) {
 		this.itNfeProdDetexports = itNfeProdDetexports;
 	}
 
@@ -561,42 +555,30 @@ public class NfeCreateImport implements Serializable {
 	}
 
 	public void fillClassAttributes(JCoParameterList jcoParam) {
-		this.isNfeAvulsa = new IsNfeAvulsa(
-				jcoParam.getStructure("IS_NFE_AVULSA"));
+		this.isNfeAvulsa = new IsNfeAvulsa(jcoParam.getStructure("IS_NFE_AVULSA"));
 		this.isNfeCana = new IsNfeCana(jcoParam.getStructure("IS_NFE_CANA"));
-		this.isNfeCompra = new IsNfeCompra(
-				jcoParam.getStructure("IS_NFE_COMPRA"));
-		this.isNfeExporta = new IsNfeExporta(
-				jcoParam.getStructure("IS_NFE_EXPORTA"));
+		this.isNfeCompra = new IsNfeCompra(jcoParam.getStructure("IS_NFE_COMPRA"));
+		this.isNfeExporta = new IsNfeExporta(jcoParam.getStructure("IS_NFE_EXPORTA"));
 		this.isNfeFat = new IsNfeFat(jcoParam.getStructure("IS_NFE_FAT"));
-		this.isNfeHeader = new IsNfeHeader(
-				jcoParam.getStructure("IS_NFE_HEADER"));
-		this.isNfeIcmstot = new IsNfeIcmstot(
-				jcoParam.getStructure("IS_NFE_ICMSTOT"));
+		this.isNfeHeader = new IsNfeHeader(jcoParam.getStructure("IS_NFE_HEADER"));
+		this.isNfeIcmstot = new IsNfeIcmstot(jcoParam.getStructure("IS_NFE_ICMSTOT"));
 		this.isNfeIde = new IsNfeIde(jcoParam.getStructure("IS_NFE_IDE"));
-		this.isNfeInfadic = new IsNfeInfadic(
-				jcoParam.getStructure("IS_NFE_INFADIC"));
-		this.isNfeIssqntot = new IsNfeIssqntot(
-				jcoParam.getStructure("IS_NFE_ISSQNTOT"));
-		this.isNfePartnerIds = new IsNfePartnerIds(
-				jcoParam.getStructure("IS_NFE_PARTNER_IDS"));
-		this.isNfeRettrib = new IsNfeRettrib(
-				jcoParam.getStructure("IS_NFE_RETTRIB"));
-		this.isNfeTransp = new IsNfeTransp(
-				jcoParam.getStructure("IS_NFE_TRANSP"));
+		this.isNfeInfadic = new IsNfeInfadic(jcoParam.getStructure("IS_NFE_INFADIC"));
+		this.isNfeIssqntot = new IsNfeIssqntot(jcoParam.getStructure("IS_NFE_ISSQNTOT"));
+		this.isNfePartnerIds = new IsNfePartnerIds(jcoParam.getStructure("IS_NFE_PARTNER_IDS"));
+		this.isNfeRettrib = new IsNfeRettrib(jcoParam.getStructure("IS_NFE_RETTRIB"));
+		this.isNfeTransp = new IsNfeTransp(jcoParam.getStructure("IS_NFE_TRANSP"));
 		this.itNfeAutxmls = new ArrayList<>();
 		JCoTable jcoItNfeAutxml = jcoParam.getTable("IT_NFE_AUTXML");
 		jcoItNfeAutxml.firstRow();
-		for (int i = 0; i < jcoItNfeAutxml.getNumRows(); jcoItNfeAutxml
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeAutxml.getNumRows(); jcoItNfeAutxml.nextRow()) {
 			this.itNfeAutxmls.add(new ItNfeAutxml(jcoItNfeAutxml));
 			i++;
 		}
 		this.itNfeCanaFordias = new ArrayList<>();
 		JCoTable jcoItNfeCanaFordia = jcoParam.getTable("IT_NFE_CANA_FORDIA");
 		jcoItNfeCanaFordia.firstRow();
-		for (int i = 0; i < jcoItNfeCanaFordia.getNumRows(); jcoItNfeCanaFordia
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeCanaFordia.getNumRows(); jcoItNfeCanaFordia.nextRow()) {
 			this.itNfeCanaFordias.add(new ItNfeCanaFordia(jcoItNfeCanaFordia));
 			i++;
 		}
@@ -610,16 +592,14 @@ public class NfeCreateImport implements Serializable {
 		this.itNfeDetImpostos = new ArrayList<>();
 		JCoTable jcoItNfeDetImposto = jcoParam.getTable("IT_NFE_DET_IMPOSTO");
 		jcoItNfeDetImposto.firstRow();
-		for (int i = 0; i < jcoItNfeDetImposto.getNumRows(); jcoItNfeDetImposto
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeDetImposto.getNumRows(); jcoItNfeDetImposto.nextRow()) {
 			this.itNfeDetImpostos.add(new ItNfeDetImposto(jcoItNfeDetImposto));
 			i++;
 		}
 		this.itNfeDetProds = new ArrayList<>();
 		JCoTable jcoItNfeDetProd = jcoParam.getTable("IT_NFE_DET_PROD");
 		jcoItNfeDetProd.firstRow();
-		for (int i = 0; i < jcoItNfeDetProd.getNumRows(); jcoItNfeDetProd
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeDetProd.getNumRows(); jcoItNfeDetProd.nextRow()) {
 			this.itNfeDetProds.add(new ItNfeDetProd(jcoItNfeDetProd));
 			i++;
 		}
@@ -652,76 +632,66 @@ public class NfeCreateImport implements Serializable {
 			i++;
 		}
 		this.itNfeImpostoCofinss = new ArrayList<>();
-		JCoTable jcoItNfeImpostoCofins = jcoParam
-				.getTable("IT_NFE_IMPOSTO_COFINS");
+		JCoTable jcoItNfeImpostoCofins = jcoParam.getTable("IT_NFE_IMPOSTO_COFINS");
 		jcoItNfeImpostoCofins.firstRow();
-		for (int i = 0; i < jcoItNfeImpostoCofins.getNumRows(); jcoItNfeImpostoCofins
-				.nextRow()) {
-			this.itNfeImpostoCofinss.add(new ItNfeImpostoCofins(
-					jcoItNfeImpostoCofins));
+		for (int i = 0; i < jcoItNfeImpostoCofins.getNumRows(); jcoItNfeImpostoCofins.nextRow()) {
+			this.itNfeImpostoCofinss.add(new ItNfeImpostoCofins(jcoItNfeImpostoCofins));
 			i++;
 		}
 		this.itNfeImpostoCofinssts = new ArrayList<>();
-		JCoTable jcoItNfeImpostoCofinsst = jcoParam
-				.getTable("IT_NFE_IMPOSTO_COFINSST");
+		JCoTable jcoItNfeImpostoCofinsst = jcoParam.getTable("IT_NFE_IMPOSTO_COFINSST");
 		jcoItNfeImpostoCofinsst.firstRow();
-		for (int i = 0; i < jcoItNfeImpostoCofinsst.getNumRows(); jcoItNfeImpostoCofinsst
-				.nextRow()) {
-			this.itNfeImpostoCofinssts.add(new ItNfeImpostoCofinsst(
-					jcoItNfeImpostoCofinsst));
+		for (int i = 0; i < jcoItNfeImpostoCofinsst.getNumRows(); jcoItNfeImpostoCofinsst.nextRow()) {
+			this.itNfeImpostoCofinssts.add(new ItNfeImpostoCofinsst(jcoItNfeImpostoCofinsst));
 			i++;
 		}
 		this.itNfeImpostoIcmss = new ArrayList<>();
 		JCoTable jcoItNfeImpostoIcms = jcoParam.getTable("IT_NFE_IMPOSTO_ICMS");
 		jcoItNfeImpostoIcms.firstRow();
-		for (int i = 0; i < jcoItNfeImpostoIcms.getNumRows(); jcoItNfeImpostoIcms
-				.nextRow()) {
-			this.itNfeImpostoIcmss
-					.add(new ItNfeImpostoIcms(jcoItNfeImpostoIcms));
+		for (int i = 0; i < jcoItNfeImpostoIcms.getNumRows(); jcoItNfeImpostoIcms.nextRow()) {
+			this.itNfeImpostoIcmss.add(new ItNfeImpostoIcms(jcoItNfeImpostoIcms));
+			i++;
+		}
+		this.itNfeImpostoIcmsufdests = new ArrayList<>();
+		JCoTable jcoItNfeImpostoIcmsufdest = jcoParam.getTable("IT_NFE_IMPOSTO_ICMSUFDEST");
+		jcoItNfeImpostoIcmsufdest.firstRow();
+		for (int i = 0; i < jcoItNfeImpostoIcmsufdest.getNumRows(); jcoItNfeImpostoIcmsufdest.nextRow()) {
+			this.itNfeImpostoIcmsufdests.add(new ItNfeImpostoIcmsufdest(jcoItNfeImpostoIcmsufdest));
 			i++;
 		}
 		this.itNfeImpostoIis = new ArrayList<>();
 		JCoTable jcoItNfeImpostoIi = jcoParam.getTable("IT_NFE_IMPOSTO_II");
 		jcoItNfeImpostoIi.firstRow();
-		for (int i = 0; i < jcoItNfeImpostoIi.getNumRows(); jcoItNfeImpostoIi
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeImpostoIi.getNumRows(); jcoItNfeImpostoIi.nextRow()) {
 			this.itNfeImpostoIis.add(new ItNfeImpostoIi(jcoItNfeImpostoIi));
 			i++;
 		}
 		this.itNfeImpostoIpis = new ArrayList<>();
 		JCoTable jcoItNfeImpostoIpi = jcoParam.getTable("IT_NFE_IMPOSTO_IPI");
 		jcoItNfeImpostoIpi.firstRow();
-		for (int i = 0; i < jcoItNfeImpostoIpi.getNumRows(); jcoItNfeImpostoIpi
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeImpostoIpi.getNumRows(); jcoItNfeImpostoIpi.nextRow()) {
 			this.itNfeImpostoIpis.add(new ItNfeImpostoIpi(jcoItNfeImpostoIpi));
 			i++;
 		}
 		this.itNfeImpostoIssqns = new ArrayList<>();
-		JCoTable jcoItNfeImpostoIssqn = jcoParam
-				.getTable("IT_NFE_IMPOSTO_ISSQN");
+		JCoTable jcoItNfeImpostoIssqn = jcoParam.getTable("IT_NFE_IMPOSTO_ISSQN");
 		jcoItNfeImpostoIssqn.firstRow();
-		for (int i = 0; i < jcoItNfeImpostoIssqn.getNumRows(); jcoItNfeImpostoIssqn
-				.nextRow()) {
-			this.itNfeImpostoIssqns.add(new ItNfeImpostoIssqn(
-					jcoItNfeImpostoIssqn));
+		for (int i = 0; i < jcoItNfeImpostoIssqn.getNumRows(); jcoItNfeImpostoIssqn.nextRow()) {
+			this.itNfeImpostoIssqns.add(new ItNfeImpostoIssqn(jcoItNfeImpostoIssqn));
 			i++;
 		}
 		this.itNfeImpostoPiss = new ArrayList<>();
 		JCoTable jcoItNfeImpostoPis = jcoParam.getTable("IT_NFE_IMPOSTO_PIS");
 		jcoItNfeImpostoPis.firstRow();
-		for (int i = 0; i < jcoItNfeImpostoPis.getNumRows(); jcoItNfeImpostoPis
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeImpostoPis.getNumRows(); jcoItNfeImpostoPis.nextRow()) {
 			this.itNfeImpostoPiss.add(new ItNfeImpostoPis(jcoItNfeImpostoPis));
 			i++;
 		}
 		this.itNfeImpostoPissts = new ArrayList<>();
-		JCoTable jcoItNfeImpostoPisst = jcoParam
-				.getTable("IT_NFE_IMPOSTO_PISST");
+		JCoTable jcoItNfeImpostoPisst = jcoParam.getTable("IT_NFE_IMPOSTO_PISST");
 		jcoItNfeImpostoPisst.firstRow();
-		for (int i = 0; i < jcoItNfeImpostoPisst.getNumRows(); jcoItNfeImpostoPisst
-				.nextRow()) {
-			this.itNfeImpostoPissts.add(new ItNfeImpostoPisst(
-					jcoItNfeImpostoPisst));
+		for (int i = 0; i < jcoItNfeImpostoPisst.getNumRows(); jcoItNfeImpostoPisst.nextRow()) {
+			this.itNfeImpostoPissts.add(new ItNfeImpostoPisst(jcoItNfeImpostoPisst));
 			i++;
 		}
 		this.itNfeNfrefs = new ArrayList<>();
@@ -741,85 +711,70 @@ public class NfeCreateImport implements Serializable {
 		this.itNfePartners = new ArrayList<>();
 		JCoTable jcoItNfePartner = jcoParam.getTable("IT_NFE_PARTNER");
 		jcoItNfePartner.firstRow();
-		for (int i = 0; i < jcoItNfePartner.getNumRows(); jcoItNfePartner
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfePartner.getNumRows(); jcoItNfePartner.nextRow()) {
 			this.itNfePartners.add(new ItNfePartner(jcoItNfePartner));
 			i++;
 		}
 		this.itNfeProcrefs = new ArrayList<>();
 		JCoTable jcoItNfeProcref = jcoParam.getTable("IT_NFE_PROCREF");
 		jcoItNfeProcref.firstRow();
-		for (int i = 0; i < jcoItNfeProcref.getNumRows(); jcoItNfeProcref
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeProcref.getNumRows(); jcoItNfeProcref.nextRow()) {
 			this.itNfeProcrefs.add(new ItNfeProcref(jcoItNfeProcref));
 			i++;
 		}
 		this.itNfeProdArmas = new ArrayList<>();
 		JCoTable jcoItNfeProdArma = jcoParam.getTable("IT_NFE_PROD_ARMA");
 		jcoItNfeProdArma.firstRow();
-		for (int i = 0; i < jcoItNfeProdArma.getNumRows(); jcoItNfeProdArma
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeProdArma.getNumRows(); jcoItNfeProdArma.nextRow()) {
 			this.itNfeProdArmas.add(new ItNfeProdArma(jcoItNfeProdArma));
 			i++;
 		}
 		this.itNfeProdCombs = new ArrayList<>();
 		JCoTable jcoItNfeProdComb = jcoParam.getTable("IT_NFE_PROD_COMB");
 		jcoItNfeProdComb.firstRow();
-		for (int i = 0; i < jcoItNfeProdComb.getNumRows(); jcoItNfeProdComb
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeProdComb.getNumRows(); jcoItNfeProdComb.nextRow()) {
 			this.itNfeProdCombs.add(new ItNfeProdComb(jcoItNfeProdComb));
 			i++;
 		}
 		this.itNfeProdDetexports = new ArrayList<>();
-		JCoTable jcoItNfeProdDetexport = jcoParam
-				.getTable("IT_NFE_PROD_DETEXPORT");
+		JCoTable jcoItNfeProdDetexport = jcoParam.getTable("IT_NFE_PROD_DETEXPORT");
 		jcoItNfeProdDetexport.firstRow();
-		for (int i = 0; i < jcoItNfeProdDetexport.getNumRows(); jcoItNfeProdDetexport
-				.nextRow()) {
-			this.itNfeProdDetexports.add(new ItNfeProdDetexport(
-					jcoItNfeProdDetexport));
+		for (int i = 0; i < jcoItNfeProdDetexport.getNumRows(); jcoItNfeProdDetexport.nextRow()) {
+			this.itNfeProdDetexports.add(new ItNfeProdDetexport(jcoItNfeProdDetexport));
 			i++;
 		}
 		this.itNfeProdDis = new ArrayList<>();
 		JCoTable jcoItNfeProdDi = jcoParam.getTable("IT_NFE_PROD_DI");
 		jcoItNfeProdDi.firstRow();
-		for (int i = 0; i < jcoItNfeProdDi.getNumRows(); jcoItNfeProdDi
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeProdDi.getNumRows(); jcoItNfeProdDi.nextRow()) {
 			this.itNfeProdDis.add(new ItNfeProdDi(jcoItNfeProdDi));
 			i++;
 		}
 		this.itNfeProdMeds = new ArrayList<>();
 		JCoTable jcoItNfeProdMed = jcoParam.getTable("IT_NFE_PROD_MED");
 		jcoItNfeProdMed.firstRow();
-		for (int i = 0; i < jcoItNfeProdMed.getNumRows(); jcoItNfeProdMed
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeProdMed.getNumRows(); jcoItNfeProdMed.nextRow()) {
 			this.itNfeProdMeds.add(new ItNfeProdMed(jcoItNfeProdMed));
 			i++;
 		}
 		this.itNfeProdNrecopis = new ArrayList<>();
 		JCoTable jcoItNfeProdNrecopi = jcoParam.getTable("IT_NFE_PROD_NRECOPI");
 		jcoItNfeProdNrecopi.firstRow();
-		for (int i = 0; i < jcoItNfeProdNrecopi.getNumRows(); jcoItNfeProdNrecopi
-				.nextRow()) {
-			this.itNfeProdNrecopis
-					.add(new ItNfeProdNrecopi(jcoItNfeProdNrecopi));
+		for (int i = 0; i < jcoItNfeProdNrecopi.getNumRows(); jcoItNfeProdNrecopi.nextRow()) {
+			this.itNfeProdNrecopis.add(new ItNfeProdNrecopi(jcoItNfeProdNrecopi));
 			i++;
 		}
 		this.itNfeProdVeicprods = new ArrayList<>();
-		JCoTable jcoItNfeProdVeicprod = jcoParam
-				.getTable("IT_NFE_PROD_VEICPROD");
+		JCoTable jcoItNfeProdVeicprod = jcoParam.getTable("IT_NFE_PROD_VEICPROD");
 		jcoItNfeProdVeicprod.firstRow();
-		for (int i = 0; i < jcoItNfeProdVeicprod.getNumRows(); jcoItNfeProdVeicprod
-				.nextRow()) {
-			this.itNfeProdVeicprods.add(new ItNfeProdVeicprod(
-					jcoItNfeProdVeicprod));
+		for (int i = 0; i < jcoItNfeProdVeicprod.getNumRows(); jcoItNfeProdVeicprod.nextRow()) {
+			this.itNfeProdVeicprods.add(new ItNfeProdVeicprod(jcoItNfeProdVeicprod));
 			i++;
 		}
 		this.itNfeReboques = new ArrayList<>();
 		JCoTable jcoItNfeReboque = jcoParam.getTable("IT_NFE_REBOQUE");
 		jcoItNfeReboque.firstRow();
-		for (int i = 0; i < jcoItNfeReboque.getNumRows(); jcoItNfeReboque
-				.nextRow()) {
+		for (int i = 0; i < jcoItNfeReboque.getNumRows(); jcoItNfeReboque.nextRow()) {
 			this.itNfeReboques.add(new ItNfeReboque(jcoItNfeReboque));
 			i++;
 		}
@@ -867,11 +822,9 @@ public class NfeCreateImport implements Serializable {
 		this.isNfeIde.fillJCoParameter(jcoIsNfeIde);
 		JCoStructure jcoIsNfeInfadic = jcoParam.getStructure("IS_NFE_INFADIC");
 		this.isNfeInfadic.fillJCoParameter(jcoIsNfeInfadic);
-		JCoStructure jcoIsNfeIssqntot = jcoParam
-				.getStructure("IS_NFE_ISSQNTOT");
+		JCoStructure jcoIsNfeIssqntot = jcoParam.getStructure("IS_NFE_ISSQNTOT");
 		this.isNfeIssqntot.fillJCoParameter(jcoIsNfeIssqntot);
-		JCoStructure jcoIsNfePartnerIds = jcoParam
-				.getStructure("IS_NFE_PARTNER_IDS");
+		JCoStructure jcoIsNfePartnerIds = jcoParam.getStructure("IS_NFE_PARTNER_IDS");
 		this.isNfePartnerIds.fillJCoParameter(jcoIsNfePartnerIds);
 		JCoStructure jcoIsNfeRettrib = jcoParam.getStructure("IS_NFE_RETTRIB");
 		this.isNfeRettrib.fillJCoParameter(jcoIsNfeRettrib);
@@ -931,15 +884,13 @@ public class NfeCreateImport implements Serializable {
 			item.fillJCoParameter(jcoItNfeExt2);
 			jcoItNfeExt2.appendRow();
 		}
-		JCoTable jcoItNfeImpostoCofins = jcoParam
-				.getTable("IT_NFE_IMPOSTO_COFINS");
+		JCoTable jcoItNfeImpostoCofins = jcoParam.getTable("IT_NFE_IMPOSTO_COFINS");
 		jcoItNfeImpostoCofins.clear();
 		for (ItNfeImpostoCofins item : this.itNfeImpostoCofinss) {
 			item.fillJCoParameter(jcoItNfeImpostoCofins);
 			jcoItNfeImpostoCofins.appendRow();
 		}
-		JCoTable jcoItNfeImpostoCofinsst = jcoParam
-				.getTable("IT_NFE_IMPOSTO_COFINSST");
+		JCoTable jcoItNfeImpostoCofinsst = jcoParam.getTable("IT_NFE_IMPOSTO_COFINSST");
 		jcoItNfeImpostoCofinsst.clear();
 		for (ItNfeImpostoCofinsst item : this.itNfeImpostoCofinssts) {
 			item.fillJCoParameter(jcoItNfeImpostoCofinsst);
@@ -950,6 +901,12 @@ public class NfeCreateImport implements Serializable {
 		for (ItNfeImpostoIcms item : this.itNfeImpostoIcmss) {
 			item.fillJCoParameter(jcoItNfeImpostoIcms);
 			jcoItNfeImpostoIcms.appendRow();
+		}
+		JCoTable jcoItNfeImpostoIcmsufdest = jcoParam.getTable("IT_NFE_IMPOSTO_ICMSUFDEST");
+		jcoItNfeImpostoIcmsufdest.clear();
+		for (ItNfeImpostoIcmsufdest item : this.itNfeImpostoIcmsufdests) {
+			item.fillJCoParameter(jcoItNfeImpostoIcmsufdest);
+			jcoItNfeImpostoIcmsufdest.appendRow();
 		}
 		JCoTable jcoItNfeImpostoIi = jcoParam.getTable("IT_NFE_IMPOSTO_II");
 		jcoItNfeImpostoIi.clear();
@@ -963,8 +920,7 @@ public class NfeCreateImport implements Serializable {
 			item.fillJCoParameter(jcoItNfeImpostoIpi);
 			jcoItNfeImpostoIpi.appendRow();
 		}
-		JCoTable jcoItNfeImpostoIssqn = jcoParam
-				.getTable("IT_NFE_IMPOSTO_ISSQN");
+		JCoTable jcoItNfeImpostoIssqn = jcoParam.getTable("IT_NFE_IMPOSTO_ISSQN");
 		jcoItNfeImpostoIssqn.clear();
 		for (ItNfeImpostoIssqn item : this.itNfeImpostoIssqns) {
 			item.fillJCoParameter(jcoItNfeImpostoIssqn);
@@ -976,8 +932,7 @@ public class NfeCreateImport implements Serializable {
 			item.fillJCoParameter(jcoItNfeImpostoPis);
 			jcoItNfeImpostoPis.appendRow();
 		}
-		JCoTable jcoItNfeImpostoPisst = jcoParam
-				.getTable("IT_NFE_IMPOSTO_PISST");
+		JCoTable jcoItNfeImpostoPisst = jcoParam.getTable("IT_NFE_IMPOSTO_PISST");
 		jcoItNfeImpostoPisst.clear();
 		for (ItNfeImpostoPisst item : this.itNfeImpostoPissts) {
 			item.fillJCoParameter(jcoItNfeImpostoPisst);
@@ -1019,8 +974,7 @@ public class NfeCreateImport implements Serializable {
 			item.fillJCoParameter(jcoItNfeProdComb);
 			jcoItNfeProdComb.appendRow();
 		}
-		JCoTable jcoItNfeProdDetexport = jcoParam
-				.getTable("IT_NFE_PROD_DETEXPORT");
+		JCoTable jcoItNfeProdDetexport = jcoParam.getTable("IT_NFE_PROD_DETEXPORT");
 		jcoItNfeProdDetexport.clear();
 		for (ItNfeProdDetexport item : this.itNfeProdDetexports) {
 			item.fillJCoParameter(jcoItNfeProdDetexport);
@@ -1044,8 +998,7 @@ public class NfeCreateImport implements Serializable {
 			item.fillJCoParameter(jcoItNfeProdNrecopi);
 			jcoItNfeProdNrecopi.appendRow();
 		}
-		JCoTable jcoItNfeProdVeicprod = jcoParam
-				.getTable("IT_NFE_PROD_VEICPROD");
+		JCoTable jcoItNfeProdVeicprod = jcoParam.getTable("IT_NFE_PROD_VEICPROD");
 		jcoItNfeProdVeicprod.clear();
 		for (ItNfeProdVeicprod item : this.itNfeProdVeicprods) {
 			item.fillJCoParameter(jcoItNfeProdVeicprod);
@@ -1104,9 +1057,8 @@ public class NfeCreateImport implements Serializable {
 		// NF-e Collection Doc Payment Date
 		private Date dPag;
 
-		public IsNfeAvulsa(String cnpj, String xOrgao, String matr,
-				String xAgente, String fone, String uf, String nDar, Date dEmi,
-				BigDecimal vDar, String repEmi, Date dPag) {
+		public IsNfeAvulsa(String cnpj, String xOrgao, String matr, String xAgente, String fone, String uf, String nDar,
+				Date dEmi, BigDecimal vDar, String repEmi, Date dPag) {
 			this.cnpj = cnpj;
 			this.xOrgao = xOrgao;
 			this.matr = matr;
@@ -1265,9 +1217,8 @@ public class NfeCreateImport implements Serializable {
 		// Reference to Line ID of Value Table
 		private Long valueIdDeduc;
 
-		public IsNfeCana(String safra, String ref, BigDecimal qTotMes,
-				BigDecimal qTotAnt, BigDecimal qTotGer, BigDecimal vFor,
-				BigDecimal vTotDed, BigDecimal vLiqFor, Long valueIdDeduc) {
+		public IsNfeCana(String safra, String ref, BigDecimal qTotMes, BigDecimal qTotAnt, BigDecimal qTotGer,
+				BigDecimal vFor, BigDecimal vTotDed, BigDecimal vLiqFor, Long valueIdDeduc) {
 			this.safra = safra;
 			this.ref = ref;
 			this.qTotMes = qTotMes;
@@ -1451,8 +1402,7 @@ public class NfeCreateImport implements Serializable {
 		// Local of the Dispatch
 		private String xLocDespacho;
 
-		public IsNfeExporta(String ufSaidaPais, String xLocExporta,
-				String xLocDespacho) {
+		public IsNfeExporta(String ufSaidaPais, String xLocExporta, String xLocDespacho) {
 			this.ufSaidaPais = ufSaidaPais;
 			this.xLocExporta = xLocExporta;
 			this.xLocDespacho = xLocDespacho;
@@ -1513,8 +1463,7 @@ public class NfeCreateImport implements Serializable {
 		// Invoice Net Value
 		private BigDecimal vLiq;
 
-		public IsNfeFat(String nFat, BigDecimal vOrig, BigDecimal vDesc,
-				BigDecimal vLiq) {
+		public IsNfeFat(String nFat, BigDecimal vOrig, BigDecimal vDesc, BigDecimal vLiq) {
 			this.nFat = nFat;
 			this.vOrig = vOrig;
 			this.vDesc = vDesc;
@@ -1588,8 +1537,7 @@ public class NfeCreateImport implements Serializable {
 		// Currency Key
 		private String waers;
 
-		public IsNfeHeader(String rfcVersion, Long docnum, String accesskey,
-				String logsys, String waers) {
+		public IsNfeHeader(String rfcVersion, Long docnum, String accesskey, String logsys, String waers) {
 			this.rfcVersion = rfcVersion;
 			this.docnum = docnum;
 			this.accesskey = accesskey;
@@ -1667,7 +1615,7 @@ public class NfeCreateImport implements Serializable {
 		private BigDecimal vBc;
 		// ICMS Value
 		private BigDecimal vIcms;
-		// NF-e Total of desoneration of ICMS
+		// Exemption value of ICMS
 		private BigDecimal vIcmsdeson;
 		// ICMS ST Base Amount
 		private BigDecimal vBcst;
@@ -1695,13 +1643,17 @@ public class NfeCreateImport implements Serializable {
 		private BigDecimal vNf;
 		// Total Tax Value, Version 2
 		private BigDecimal vTotTrib;
+		// ICMS value for FCP of UF of destination
+		private BigDecimal vFcpufdest;
+		// Interstate ICMS value for UF of destination
+		private BigDecimal vIcmsufdest;
+		// Interstate ICMS value for UF of sender
+		private BigDecimal vIcmsufremet;
 
-		public IsNfeIcmstot(BigDecimal vBc, BigDecimal vIcms,
-				BigDecimal vIcmsdeson, BigDecimal vBcst, BigDecimal vSt,
-				BigDecimal vProd, BigDecimal vFrete, BigDecimal vSeg,
-				BigDecimal vDesc, BigDecimal vIi, BigDecimal vIpi,
-				BigDecimal vPis, BigDecimal vCofins, BigDecimal vOutro,
-				BigDecimal vNf, BigDecimal vTotTrib) {
+		public IsNfeIcmstot(BigDecimal vBc, BigDecimal vIcms, BigDecimal vIcmsdeson, BigDecimal vBcst, BigDecimal vSt,
+				BigDecimal vProd, BigDecimal vFrete, BigDecimal vSeg, BigDecimal vDesc, BigDecimal vIi, BigDecimal vIpi,
+				BigDecimal vPis, BigDecimal vCofins, BigDecimal vOutro, BigDecimal vNf, BigDecimal vTotTrib,
+				BigDecimal vFcpufdest, BigDecimal vIcmsufdest, BigDecimal vIcmsufremet) {
 			this.vBc = vBc;
 			this.vIcms = vIcms;
 			this.vIcmsdeson = vIcmsdeson;
@@ -1718,6 +1670,9 @@ public class NfeCreateImport implements Serializable {
 			this.vOutro = vOutro;
 			this.vNf = vNf;
 			this.vTotTrib = vTotTrib;
+			this.vFcpufdest = vFcpufdest;
+			this.vIcmsufdest = vIcmsufdest;
+			this.vIcmsufremet = vIcmsufremet;
 		}
 
 		public IsNfeIcmstot(JCoStructure jcoParam) {
@@ -1852,6 +1807,30 @@ public class NfeCreateImport implements Serializable {
 			return this.vTotTrib;
 		}
 
+		public void setVFcpufdest(BigDecimal vFcpufdest) {
+			this.vFcpufdest = vFcpufdest;
+		}
+
+		public BigDecimal getVFcpufdest() {
+			return this.vFcpufdest;
+		}
+
+		public void setVIcmsufdest(BigDecimal vIcmsufdest) {
+			this.vIcmsufdest = vIcmsufdest;
+		}
+
+		public BigDecimal getVIcmsufdest() {
+			return this.vIcmsufdest;
+		}
+
+		public void setVIcmsufremet(BigDecimal vIcmsufremet) {
+			this.vIcmsufremet = vIcmsufremet;
+		}
+
+		public BigDecimal getVIcmsufremet() {
+			return this.vIcmsufremet;
+		}
+
 		public void fillClassAttributes(JCoStructure jcoParam) {
 			this.vBc = jcoParam.getBigDecimal("V_BC");
 			this.vIcms = jcoParam.getBigDecimal("V_ICMS");
@@ -1869,6 +1848,9 @@ public class NfeCreateImport implements Serializable {
 			this.vOutro = jcoParam.getBigDecimal("V_OUTRO");
 			this.vNf = jcoParam.getBigDecimal("V_NF");
 			this.vTotTrib = jcoParam.getBigDecimal("V_TOT_TRIB");
+			this.vFcpufdest = jcoParam.getBigDecimal("V_FCPUFDEST");
+			this.vIcmsufdest = jcoParam.getBigDecimal("V_ICMSUFDEST");
+			this.vIcmsufremet = jcoParam.getBigDecimal("V_ICMSUFREMET");
 		}
 
 		public void fillJCoParameter(JCoStructure jcoParam) {
@@ -1889,6 +1871,9 @@ public class NfeCreateImport implements Serializable {
 			jcoParam.setValue("V_OUTRO", this.vOutro);
 			jcoParam.setValue("V_NF", this.vNf);
 			jcoParam.setValue("V_TOT_TRIB", this.vTotTrib);
+			jcoParam.setValue("V_FCPUFDEST", this.vFcpufdest);
+			jcoParam.setValue("V_ICMSUFDEST", this.vIcmsufdest);
+			jcoParam.setValue("V_ICMSUFREMET", this.vIcmsufremet);
 		}
 
 	}
@@ -1943,11 +1928,9 @@ public class NfeCreateImport implements Serializable {
 		// NF-e Contingency Reason
 		private String xJust;
 
-		public IsNfeIde(String cUf, String cNf, String natOp, String indPag,
-				Long mod, String serie, String nNf, String dhEmi,
-				String dhSaiEnt, String tpNf, String idDest, String cMunFg,
-				String tpImp, String tpEmis, String cDv, String tpAmb,
-				String finNfe, String indFinal, String indPres, String procEmi,
+		public IsNfeIde(String cUf, String cNf, String natOp, String indPag, Long mod, String serie, String nNf,
+				String dhEmi, String dhSaiEnt, String tpNf, String idDest, String cMunFg, String tpImp, String tpEmis,
+				String cDv, String tpAmb, String finNfe, String indFinal, String indPres, String procEmi,
 				String verProc, String dhCont, String xJust) {
 			this.cUf = cUf;
 			this.cNf = cNf;
@@ -2229,8 +2212,7 @@ public class NfeCreateImport implements Serializable {
 		// Reference to Line ID of Text Table
 		private Long textIdObsfisco;
 
-		public IsNfeInfadic(String infAdFisco, String infCpl,
-				Long textIdObscont, Long textIdObsfisco) {
+		public IsNfeInfadic(String infAdFisco, String infCpl, Long textIdObscont, Long textIdObsfisco) {
 			this.infAdFisco = infAdFisco;
 			this.infCpl = infCpl;
 			this.textIdObscont = textIdObscont;
@@ -2318,10 +2300,9 @@ public class NfeCreateImport implements Serializable {
 		// Code of Special Taxation Regimen
 		private String cRegTrib;
 
-		public IsNfeIssqntot(BigDecimal vServ, BigDecimal vBc, BigDecimal vIss,
-				BigDecimal vPis, BigDecimal vCofins, Date dCompet,
-				BigDecimal vDeducao, BigDecimal vOutro, BigDecimal vDescIncond,
-				BigDecimal vDescCond, BigDecimal vIssret, String cRegTrib) {
+		public IsNfeIssqntot(BigDecimal vServ, BigDecimal vBc, BigDecimal vIss, BigDecimal vPis, BigDecimal vCofins,
+				Date dCompet, BigDecimal vDeducao, BigDecimal vOutro, BigDecimal vDescIncond, BigDecimal vDescCond,
+				BigDecimal vIssret, String cRegTrib) {
 			this.vServ = vServ;
 			this.vBc = vBc;
 			this.vIss = vIss;
@@ -2483,8 +2464,7 @@ public class NfeCreateImport implements Serializable {
 		// NF-e RFC Partner Reference
 		private Long partnerIdTransporta;
 
-		public IsNfePartnerIds(Long partnerIdEmit, Long partnerIdDest,
-				Long partnerIdRetirada, Long partnerIdEntrega,
+		public IsNfePartnerIds(Long partnerIdEmit, Long partnerIdDest, Long partnerIdRetirada, Long partnerIdEntrega,
 				Long partnerIdTransporta) {
 			this.partnerIdEmit = partnerIdEmit;
 			this.partnerIdDest = partnerIdDest;
@@ -2542,8 +2522,7 @@ public class NfeCreateImport implements Serializable {
 			this.partnerIdDest = jcoParam.getLong("PARTNER_ID_DEST");
 			this.partnerIdRetirada = jcoParam.getLong("PARTNER_ID_RETIRADA");
 			this.partnerIdEntrega = jcoParam.getLong("PARTNER_ID_ENTREGA");
-			this.partnerIdTransporta = jcoParam
-					.getLong("PARTNER_ID_TRANSPORTA");
+			this.partnerIdTransporta = jcoParam.getLong("PARTNER_ID_TRANSPORTA");
 		}
 
 		public void fillJCoParameter(JCoStructure jcoParam) {
@@ -2575,9 +2554,8 @@ public class NfeCreateImport implements Serializable {
 		// Withheld Social Security Value
 		private BigDecimal vRetPrev;
 
-		public IsNfeRettrib(BigDecimal vRetPis, BigDecimal vRetCofins,
-				BigDecimal vRetCsll, BigDecimal vBcirrf, BigDecimal vIrrf,
-				BigDecimal vBcretPrev, BigDecimal vRetPrev) {
+		public IsNfeRettrib(BigDecimal vRetPis, BigDecimal vRetCofins, BigDecimal vRetCsll, BigDecimal vBcirrf,
+				BigDecimal vIrrf, BigDecimal vBcretPrev, BigDecimal vRetPrev) {
 			this.vRetPis = vRetPis;
 			this.vRetCofins = vRetCofins;
 			this.vRetCsll = vRetCsll;
@@ -2698,10 +2676,9 @@ public class NfeCreateImport implements Serializable {
 		// Ferryboat Identification
 		private String balsa;
 
-		public IsNfeTransp(String modFrete, BigDecimal vServ,
-				BigDecimal vBcret, BigDecimal pIcmsret, BigDecimal vIcmsret,
-				String cfop, Long cMunFg, String placa, String uf, String rntc,
-				String vagao, String balsa) {
+		public IsNfeTransp(String modFrete, BigDecimal vServ, BigDecimal vBcret, BigDecimal pIcmsret,
+				BigDecimal vIcmsret, String cfop, Long cMunFg, String placa, String uf, String rntc, String vagao,
+				String balsa) {
 			this.modFrete = modFrete;
 			this.vServ = vServ;
 			this.vBcret = vBcret;
@@ -2978,15 +2955,15 @@ public class NfeCreateImport implements Serializable {
 		private Long prodRef;
 		// NF-e RFC Tax Reference
 		private Long impostoRef;
-		// NF-e Percentage of Returned Goods
+		// Quantity returned (%)
 		private BigDecimal pDevol;
 		// NF-e IPI Returned Value
 		private BigDecimal vIpidevol;
 		// Additional Information Concerning to the Authorities
 		private String infAdProd;
 
-		public ItNfeDet(Long id, Long nItem, Long prodRef, Long impostoRef,
-				BigDecimal pDevol, BigDecimal vIpidevol, String infAdProd) {
+		public ItNfeDet(Long id, Long nItem, Long prodRef, Long impostoRef, BigDecimal pDevol, BigDecimal vIpidevol,
+				String infAdProd) {
 			this.id = id;
 			this.nItem = nItem;
 			this.prodRef = prodRef;
@@ -3102,10 +3079,11 @@ public class NfeCreateImport implements Serializable {
 		private Long cofinsRef;
 		// Reference of line-ID of Tab. J_1BNFE_T_RFC_IMPOSTO_COFINSST
 		private Long cofinsstRef;
+		// Reference of line-ID of Tab. J_1BNFE_T_RFC_PARTILHA_ICMS
+		private Long icmsufdestRef;
 
-		public ItNfeDetImposto(Long id, BigDecimal vtottrib, Long icmsRef,
-				Long ipiRef, Long iiRef, Long issqnRef, Long pisRef,
-				Long pisstRef, Long cofinsRef, Long cofinsstRef) {
+		public ItNfeDetImposto(Long id, BigDecimal vtottrib, Long icmsRef, Long ipiRef, Long iiRef, Long issqnRef,
+				Long pisRef, Long pisstRef, Long cofinsRef, Long cofinsstRef, Long icmsufdestRef) {
 			this.id = id;
 			this.vtottrib = vtottrib;
 			this.icmsRef = icmsRef;
@@ -3116,6 +3094,7 @@ public class NfeCreateImport implements Serializable {
 			this.pisstRef = pisstRef;
 			this.cofinsRef = cofinsRef;
 			this.cofinsstRef = cofinsstRef;
+			this.icmsufdestRef = icmsufdestRef;
 		}
 
 		public ItNfeDetImposto(JCoTable jcoParam) {
@@ -3202,6 +3181,14 @@ public class NfeCreateImport implements Serializable {
 			return this.cofinsstRef;
 		}
 
+		public void setIcmsufdestRef(Long icmsufdestRef) {
+			this.icmsufdestRef = icmsufdestRef;
+		}
+
+		public Long getIcmsufdestRef() {
+			return this.icmsufdestRef;
+		}
+
 		public void fillClassAttributes(JCoTable jcoParam) {
 			this.id = jcoParam.getLong("ID");
 			this.vtottrib = jcoParam.getBigDecimal("VTOTTRIB");
@@ -3213,6 +3200,7 @@ public class NfeCreateImport implements Serializable {
 			this.pisstRef = jcoParam.getLong("PISST_REF");
 			this.cofinsRef = jcoParam.getLong("COFINS_REF");
 			this.cofinsstRef = jcoParam.getLong("COFINSST_REF");
+			this.icmsufdestRef = jcoParam.getLong("ICMSUFDEST_REF");
 		}
 
 		public void fillJCoParameter(JCoTable jcoParam) {
@@ -3227,6 +3215,7 @@ public class NfeCreateImport implements Serializable {
 			jcoParam.setValue("PISST_REF", this.pisstRef);
 			jcoParam.setValue("COFINS_REF", this.cofinsRef);
 			jcoParam.setValue("COFINSST_REF", this.cofinsstRef);
+			jcoParam.setValue("ICMSUFDEST_REF", this.icmsufdestRef);
 		}
 
 	}
@@ -3296,16 +3285,15 @@ public class NfeCreateImport implements Serializable {
 		private Long combRef;
 		// Line ID of Table
 		private Long nrecopiRef;
+		// ICMS ST Legal Classification Code
+		private String cest;
 
-		public ItNfeDetProd(Long id, String cProd, String cEan, String xProd,
-				String ncm, Long textIdNve, String extipi, String cfop,
-				String uCom, BigDecimal qCom, BigDecimal vUnCom,
-				BigDecimal vProd, String cEantrib, String uTrib,
-				BigDecimal qTrib, BigDecimal vUnTrib, BigDecimal vFrete,
-				BigDecimal vSeg, BigDecimal vDesc, BigDecimal vOutro,
-				Long indTot, Long diRef, Long detexportRef, String xPed,
-				Long nItemPed, String nFci, Long veicprodRef, Long medRef,
-				Long armaRef, Long combRef, Long nrecopiRef) {
+		public ItNfeDetProd(Long id, String cProd, String cEan, String xProd, String ncm, Long textIdNve, String extipi,
+				String cfop, String uCom, BigDecimal qCom, BigDecimal vUnCom, BigDecimal vProd, String cEantrib,
+				String uTrib, BigDecimal qTrib, BigDecimal vUnTrib, BigDecimal vFrete, BigDecimal vSeg,
+				BigDecimal vDesc, BigDecimal vOutro, Long indTot, Long diRef, Long detexportRef, String xPed,
+				Long nItemPed, String nFci, Long veicprodRef, Long medRef, Long armaRef, Long combRef, Long nrecopiRef,
+				String cest) {
 			this.id = id;
 			this.cProd = cProd;
 			this.cEan = cEan;
@@ -3337,6 +3325,7 @@ public class NfeCreateImport implements Serializable {
 			this.armaRef = armaRef;
 			this.combRef = combRef;
 			this.nrecopiRef = nrecopiRef;
+			this.cest = cest;
 		}
 
 		public ItNfeDetProd(JCoTable jcoParam) {
@@ -3591,6 +3580,14 @@ public class NfeCreateImport implements Serializable {
 			return this.nrecopiRef;
 		}
 
+		public void setCest(String cest) {
+			this.cest = cest;
+		}
+
+		public String getCest() {
+			return this.cest;
+		}
+
 		public void fillClassAttributes(JCoTable jcoParam) {
 			this.id = jcoParam.getLong("ID");
 			this.cProd = jcoParam.getString("C_PROD");
@@ -3623,6 +3620,7 @@ public class NfeCreateImport implements Serializable {
 			this.armaRef = jcoParam.getLong("ARMA_REF");
 			this.combRef = jcoParam.getLong("COMB_REF");
 			this.nrecopiRef = jcoParam.getLong("NRECOPI_REF");
+			this.cest = jcoParam.getString("CEST");
 		}
 
 		public void fillJCoParameter(JCoTable jcoParam) {
@@ -3658,6 +3656,7 @@ public class NfeCreateImport implements Serializable {
 			jcoParam.setValue("ARMA_REF", this.armaRef);
 			jcoParam.setValue("COMB_REF", this.combRef);
 			jcoParam.setValue("NRECOPI_REF", this.nrecopiRef);
+			jcoParam.setValue("CEST", this.cest);
 		}
 
 	}
@@ -3680,8 +3679,8 @@ public class NfeCreateImport implements Serializable {
 		// Number of drawback concession
 		private String nDraw;
 
-		public ItNfeDiAdi(Long id, Long seqNo, Long nAdicao, Long nSeqAdic,
-				String cFabricante, BigDecimal vDescDi, String nDraw) {
+		public ItNfeDiAdi(Long id, Long seqNo, Long nAdicao, Long nSeqAdic, String cFabricante, BigDecimal vDescDi,
+				String nDraw) {
 			this.id = id;
 			this.seqNo = seqNo;
 			this.nAdicao = nAdicao;
@@ -3862,8 +3861,7 @@ public class NfeCreateImport implements Serializable {
 		// Character field with length 250
 		private String field4;
 
-		public ItNfeExt1(Long docnum, Long itmnum, String field1,
-				String field2, String field3, String field4) {
+		public ItNfeExt1(Long docnum, Long itmnum, String field1, String field2, String field3, String field4) {
 			this.docnum = docnum;
 			this.itmnum = itmnum;
 			this.field1 = field1;
@@ -3965,8 +3963,8 @@ public class NfeCreateImport implements Serializable {
 		// Length (No. of Characters)
 		private Long length;
 
-		public ItNfeExt2(Long docnum, Long itmnum, String param, Integer row,
-				String field, String value, String type, Long length) {
+		public ItNfeExt2(Long docnum, Long itmnum, String param, Integer row, String field, String value, String type,
+				Long length) {
 			this.docnum = docnum;
 			this.itmnum = itmnum;
 			this.param = param;
@@ -4088,9 +4086,8 @@ public class NfeCreateImport implements Serializable {
 		// Factoring (in BRL)
 		private BigDecimal vAliqProd;
 
-		public ItNfeImpostoCofins(Long id, String cst, BigDecimal vBc,
-				BigDecimal pCofins, BigDecimal vCofins, BigDecimal qBcprod,
-				BigDecimal vAliqProd) {
+		public ItNfeImpostoCofins(Long id, String cst, BigDecimal vBc, BigDecimal pCofins, BigDecimal vCofins,
+				BigDecimal qBcprod, BigDecimal vAliqProd) {
 			this.id = id;
 			this.cst = cst;
 			this.vBc = vBc;
@@ -4199,8 +4196,7 @@ public class NfeCreateImport implements Serializable {
 		// Factoring (in BRL)
 		private BigDecimal vAliqProd;
 
-		public ItNfeImpostoCofinsst(Long id, BigDecimal vBc,
-				BigDecimal pCofins, BigDecimal vCofins, BigDecimal qBcprod,
+		public ItNfeImpostoCofinsst(Long id, BigDecimal vBc, BigDecimal pCofins, BigDecimal vCofins, BigDecimal qBcprod,
 				BigDecimal vAliqProd) {
 			this.id = id;
 			this.vBc = vBc;
@@ -4314,7 +4310,7 @@ public class NfeCreateImport implements Serializable {
 		private BigDecimal vIcmsst;
 		// Percentage Reduction of BC of ICMS
 		private BigDecimal pRedBc;
-		// NF-e Total of desoneration of ICMS
+		// Exemption value of ICMS
 		private BigDecimal vIcmsdeson;
 		// Reason of desoneration of ICMS
 		private String motDesIcms;
@@ -4343,15 +4339,12 @@ public class NfeCreateImport implements Serializable {
 		// ICMS Credit Value According to LC 123 (Simples Nacional)
 		private BigDecimal vCredIcmssn;
 
-		public ItNfeImpostoIcms(Long id, String orig, String cst, Long modBc,
-				BigDecimal vBc, BigDecimal pIcms, BigDecimal vIcms,
-				Long modBcst, BigDecimal pMvast, BigDecimal pRedBcst,
-				BigDecimal vBcst, BigDecimal pIcmsst, BigDecimal vIcmsst,
-				BigDecimal pRedBc, BigDecimal vIcmsdeson, String motDesIcms,
-				BigDecimal vIcmsop, BigDecimal pDif, BigDecimal vIcmsdif,
-				BigDecimal vBcstret, BigDecimal vIcmsstret, BigDecimal pBcop,
-				String ufst, BigDecimal vBcstdest, BigDecimal vIcmsstdest,
-				Long csosn, BigDecimal pCredSn, BigDecimal vCredIcmssn) {
+		public ItNfeImpostoIcms(Long id, String orig, String cst, Long modBc, BigDecimal vBc, BigDecimal pIcms,
+				BigDecimal vIcms, Long modBcst, BigDecimal pMvast, BigDecimal pRedBcst, BigDecimal vBcst,
+				BigDecimal pIcmsst, BigDecimal vIcmsst, BigDecimal pRedBc, BigDecimal vIcmsdeson, String motDesIcms,
+				BigDecimal vIcmsop, BigDecimal pDif, BigDecimal vIcmsdif, BigDecimal vBcstret, BigDecimal vIcmsstret,
+				BigDecimal pBcop, String ufst, BigDecimal vBcstdest, BigDecimal vIcmsstdest, Long csosn,
+				BigDecimal pCredSn, BigDecimal vCredIcmssn) {
 			this.id = id;
 			this.orig = orig;
 			this.cst = cst;
@@ -4675,6 +4668,145 @@ public class NfeCreateImport implements Serializable {
 
 	}
 
+	public static class ItNfeImpostoIcmsufdest implements Serializable {
+		private static final long serialVersionUID = 337339270983782151L;
+
+		// Line ID of Table
+		private Long id;
+		// Value of the ICMS BC in the UF of destination
+		private BigDecimal vBcufDest;
+		// ICMS percentage for FCP in the UF of destination
+		private BigDecimal pFcpufDest;
+		// Internal tax rate of the UF of destination
+		private BigDecimal pIcmsufDest;
+		// Interstate tax rate of UF involved
+		private BigDecimal pIcmsInter;
+		// Temporary percentage of interstate ICMS Partilha
+		private BigDecimal pIcmsInterPart;
+		// ICMS value for FCP of UF of destination
+		private BigDecimal vFcpufDest;
+		// Interstate ICMS value for UF of destination
+		private BigDecimal vIcmsufDest;
+		// Interstate ICMS value for UF of sender
+		private BigDecimal vIcmsufRemet;
+
+		public ItNfeImpostoIcmsufdest(Long id, BigDecimal vBcufDest, BigDecimal pFcpufDest, BigDecimal pIcmsufDest,
+				BigDecimal pIcmsInter, BigDecimal pIcmsInterPart, BigDecimal vFcpufDest, BigDecimal vIcmsufDest,
+				BigDecimal vIcmsufRemet) {
+			this.id = id;
+			this.vBcufDest = vBcufDest;
+			this.pFcpufDest = pFcpufDest;
+			this.pIcmsufDest = pIcmsufDest;
+			this.pIcmsInter = pIcmsInter;
+			this.pIcmsInterPart = pIcmsInterPart;
+			this.vFcpufDest = vFcpufDest;
+			this.vIcmsufDest = vIcmsufDest;
+			this.vIcmsufRemet = vIcmsufRemet;
+		}
+
+		public ItNfeImpostoIcmsufdest(JCoTable jcoParam) {
+			fillClassAttributes(jcoParam);
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public Long getId() {
+			return this.id;
+		}
+
+		public void setVBcufDest(BigDecimal vBcufDest) {
+			this.vBcufDest = vBcufDest;
+		}
+
+		public BigDecimal getVBcufDest() {
+			return this.vBcufDest;
+		}
+
+		public void setPFcpufDest(BigDecimal pFcpufDest) {
+			this.pFcpufDest = pFcpufDest;
+		}
+
+		public BigDecimal getPFcpufDest() {
+			return this.pFcpufDest;
+		}
+
+		public void setPIcmsufDest(BigDecimal pIcmsufDest) {
+			this.pIcmsufDest = pIcmsufDest;
+		}
+
+		public BigDecimal getPIcmsufDest() {
+			return this.pIcmsufDest;
+		}
+
+		public void setPIcmsInter(BigDecimal pIcmsInter) {
+			this.pIcmsInter = pIcmsInter;
+		}
+
+		public BigDecimal getPIcmsInter() {
+			return this.pIcmsInter;
+		}
+
+		public void setPIcmsInterPart(BigDecimal pIcmsInterPart) {
+			this.pIcmsInterPart = pIcmsInterPart;
+		}
+
+		public BigDecimal getPIcmsInterPart() {
+			return this.pIcmsInterPart;
+		}
+
+		public void setVFcpufDest(BigDecimal vFcpufDest) {
+			this.vFcpufDest = vFcpufDest;
+		}
+
+		public BigDecimal getVFcpufDest() {
+			return this.vFcpufDest;
+		}
+
+		public void setVIcmsufDest(BigDecimal vIcmsufDest) {
+			this.vIcmsufDest = vIcmsufDest;
+		}
+
+		public BigDecimal getVIcmsufDest() {
+			return this.vIcmsufDest;
+		}
+
+		public void setVIcmsufRemet(BigDecimal vIcmsufRemet) {
+			this.vIcmsufRemet = vIcmsufRemet;
+		}
+
+		public BigDecimal getVIcmsufRemet() {
+			return this.vIcmsufRemet;
+		}
+
+		public void fillClassAttributes(JCoTable jcoParam) {
+			this.id = jcoParam.getLong("ID");
+			this.vBcufDest = jcoParam.getBigDecimal("V_BCUF_DEST");
+			this.pFcpufDest = jcoParam.getBigDecimal("P_FCPUF_DEST");
+			this.pIcmsufDest = jcoParam.getBigDecimal("P_ICMSUF_DEST");
+			this.pIcmsInter = jcoParam.getBigDecimal("P_ICMS_INTER");
+			this.pIcmsInterPart = jcoParam.getBigDecimal("P_ICMS_INTER_PART");
+			this.vFcpufDest = jcoParam.getBigDecimal("V_FCPUF_DEST");
+			this.vIcmsufDest = jcoParam.getBigDecimal("V_ICMSUF_DEST");
+			this.vIcmsufRemet = jcoParam.getBigDecimal("V_ICMSUF_REMET");
+		}
+
+		public void fillJCoParameter(JCoTable jcoParam) {
+			jcoParam.clear();
+			jcoParam.setValue("ID", this.id);
+			jcoParam.setValue("V_BCUF_DEST", this.vBcufDest);
+			jcoParam.setValue("P_FCPUF_DEST", this.pFcpufDest);
+			jcoParam.setValue("P_ICMSUF_DEST", this.pIcmsufDest);
+			jcoParam.setValue("P_ICMS_INTER", this.pIcmsInter);
+			jcoParam.setValue("P_ICMS_INTER_PART", this.pIcmsInterPart);
+			jcoParam.setValue("V_FCPUF_DEST", this.vFcpufDest);
+			jcoParam.setValue("V_ICMSUF_DEST", this.vIcmsufDest);
+			jcoParam.setValue("V_ICMSUF_REMET", this.vIcmsufRemet);
+		}
+
+	}
+
 	public static class ItNfeImpostoIi implements Serializable {
 		private static final long serialVersionUID = 337339270983782151L;
 
@@ -4689,8 +4821,7 @@ public class NfeCreateImport implements Serializable {
 		// Financial Operations Tax (IOF) Value
 		private BigDecimal vIof;
 
-		public ItNfeImpostoIi(Long id, BigDecimal vBc, BigDecimal vDespAdu,
-				BigDecimal vIi, BigDecimal vIof) {
+		public ItNfeImpostoIi(Long id, BigDecimal vBc, BigDecimal vDespAdu, BigDecimal vIi, BigDecimal vIof) {
 			this.id = id;
 			this.vBc = vBc;
 			this.vDespAdu = vDespAdu;
@@ -4788,11 +4919,12 @@ public class NfeCreateImport implements Serializable {
 		private BigDecimal qUnid;
 		// Taxable Unity Value
 		private BigDecimal vUnid;
+		// Nota Fiscal tax record type
+		private String pauta;
 
-		public ItNfeImpostoIpi(Long id, String clEnq, String cnpjprod,
-				String cSelo, Long qSelo, String cEnq, String cst,
-				BigDecimal vBc, BigDecimal pIpi, BigDecimal vIpi,
-				BigDecimal qUnid, BigDecimal vUnid) {
+		public ItNfeImpostoIpi(Long id, String clEnq, String cnpjprod, String cSelo, Long qSelo, String cEnq,
+				String cst, BigDecimal vBc, BigDecimal pIpi, BigDecimal vIpi, BigDecimal qUnid, BigDecimal vUnid,
+				String pauta) {
 			this.id = id;
 			this.clEnq = clEnq;
 			this.cnpjprod = cnpjprod;
@@ -4805,6 +4937,7 @@ public class NfeCreateImport implements Serializable {
 			this.vIpi = vIpi;
 			this.qUnid = qUnid;
 			this.vUnid = vUnid;
+			this.pauta = pauta;
 		}
 
 		public ItNfeImpostoIpi(JCoTable jcoParam) {
@@ -4907,6 +5040,14 @@ public class NfeCreateImport implements Serializable {
 			return this.vUnid;
 		}
 
+		public void setPauta(String pauta) {
+			this.pauta = pauta;
+		}
+
+		public String getPauta() {
+			return this.pauta;
+		}
+
 		public void fillClassAttributes(JCoTable jcoParam) {
 			this.id = jcoParam.getLong("ID");
 			this.clEnq = jcoParam.getString("CL_ENQ");
@@ -4920,6 +5061,7 @@ public class NfeCreateImport implements Serializable {
 			this.vIpi = jcoParam.getBigDecimal("V_IPI");
 			this.qUnid = jcoParam.getBigDecimal("Q_UNID");
 			this.vUnid = jcoParam.getBigDecimal("V_UNID");
+			this.pauta = jcoParam.getString("PAUTA");
 		}
 
 		public void fillJCoParameter(JCoTable jcoParam) {
@@ -4936,6 +5078,7 @@ public class NfeCreateImport implements Serializable {
 			jcoParam.setValue("V_IPI", this.vIpi);
 			jcoParam.setValue("Q_UNID", this.qUnid);
 			jcoParam.setValue("V_UNID", this.vUnid);
+			jcoParam.setValue("PAUTA", this.pauta);
 		}
 
 	}
@@ -4978,11 +5121,9 @@ public class NfeCreateImport implements Serializable {
 		// Fiscal incentives Indicator
 		private Long indIncentivo;
 
-		public ItNfeImpostoIssqn(Long id, BigDecimal vBc, BigDecimal vAliq,
-				BigDecimal vIssqn, Long cMunFg, String cListServ,
-				BigDecimal vDeducao, BigDecimal vOutro, BigDecimal vDescIncond,
-				BigDecimal vDescCond, BigDecimal vIssret, Long indIss,
-				String cServico, Long cMun, String cPais, String nProcesso,
+		public ItNfeImpostoIssqn(Long id, BigDecimal vBc, BigDecimal vAliq, BigDecimal vIssqn, Long cMunFg,
+				String cListServ, BigDecimal vDeducao, BigDecimal vOutro, BigDecimal vDescIncond, BigDecimal vDescCond,
+				BigDecimal vIssret, Long indIss, String cServico, Long cMun, String cPais, String nProcesso,
 				Long indIncentivo) {
 			this.id = id;
 			this.vBc = vBc;
@@ -5204,8 +5345,7 @@ public class NfeCreateImport implements Serializable {
 		// Factoring (in BRL)
 		private BigDecimal vAliqProd;
 
-		public ItNfeImpostoPis(Long id, Long cst, BigDecimal vBc,
-				BigDecimal pPis, BigDecimal vPis, BigDecimal qBcprod,
+		public ItNfeImpostoPis(Long id, Long cst, BigDecimal vBc, BigDecimal pPis, BigDecimal vPis, BigDecimal qBcprod,
 				BigDecimal vAliqProd) {
 			this.id = id;
 			this.cst = cst;
@@ -5315,8 +5455,8 @@ public class NfeCreateImport implements Serializable {
 		// Tax Value
 		private BigDecimal vPis;
 
-		public ItNfeImpostoPisst(Long id, BigDecimal vBc, BigDecimal pPis,
-				BigDecimal qBcprod, BigDecimal vAliqProd, BigDecimal vPis) {
+		public ItNfeImpostoPisst(Long id, BigDecimal vBc, BigDecimal pPis, BigDecimal qBcprod, BigDecimal vAliqProd,
+				BigDecimal vPis) {
 			this.id = id;
 			this.vBc = vBc;
 			this.pPis = pPis;
@@ -5419,7 +5559,7 @@ public class NfeCreateImport implements Serializable {
 		private String nNf;
 		// Tax Number 2
 		private String cpf;
-		// State Tax Number
+		// NF-e RFC State Tax Number
 		private String ie;
 		// NF-e: 44-Digit Access Key
 		private String refCte;
@@ -5430,9 +5570,8 @@ public class NfeCreateImport implements Serializable {
 		// NF-e Operation Order Counter Number
 		private Long nCoo;
 
-		public ItNfeNfref(Long id, String refNfe, String cUf, Long aamm,
-				String cnpj, Long mod, String serie, String nNf, String cpf,
-				String ie, String refCte, String modEcf, Long nEcf, Long nCoo) {
+		public ItNfeNfref(Long id, String refNfe, String cUf, Long aamm, String cnpj, Long mod, String serie,
+				String nNf, String cpf, String ie, String refCte, String modEcf, Long nEcf, Long nCoo) {
 			this.id = id;
 			this.refNfe = refNfe;
 			this.cUf = cUf;
@@ -5618,8 +5757,7 @@ public class NfeCreateImport implements Serializable {
 		// Authorization Number
 		private String cAut;
 
-		public ItNfePag(Long id, String tPag, BigDecimal vPag, String cnpj,
-				String tBand, String cAut) {
+		public ItNfePag(Long id, String tPag, BigDecimal vPag, String cnpj, String tBand, String cAut) {
 			this.id = id;
 			this.tPag = tPag;
 			this.vPag = vPag;
@@ -5759,11 +5897,9 @@ public class NfeCreateImport implements Serializable {
 		// NF-e RFC Complete Address
 		private String xEnder;
 
-		public ItNfePartner(Long id, Long seqNo, String cnpj, String cpf,
-				String xNome, String xFant, String xLgr, String nro,
-				String xCpl, String xBairro, Long cMun, String xMun, String uf,
-				String cep, String cPais, String xPais, String fone, String ie,
-				String isuf, String email, String iest, String im, String cnae,
+		public ItNfePartner(Long id, Long seqNo, String cnpj, String cpf, String xNome, String xFant, String xLgr,
+				String nro, String xCpl, String xBairro, Long cMun, String xMun, String uf, String cep, String cPais,
+				String xPais, String fone, String ie, String isuf, String email, String iest, String im, String cnae,
 				Long crt, Long indIedest, String idEstrangeiro, String xEnder) {
 			this.id = id;
 			this.seqNo = seqNo;
@@ -6152,8 +6288,7 @@ public class NfeCreateImport implements Serializable {
 		// Complete Gun Description
 		private String descr;
 
-		public ItNfeProdArma(Long id, Long seqNo, Long tpArma, String nSerie,
-				String nCano, String descr) {
+		public ItNfeProdArma(Long id, Long seqNo, Long tpArma, String nSerie, String nCano, String descr) {
 			this.id = id;
 			this.seqNo = seqNo;
 			this.tpArma = tpArma;
@@ -6256,10 +6391,20 @@ public class NfeCreateImport implements Serializable {
 		private BigDecimal vAliqProd;
 		// CIDE Amount
 		private BigDecimal vCide;
+		// Nozzle number
+		private String nBico;
+		// Fuel pump number
+		private String nBomba;
+		// Fuel tank number
+		private String nTanque;
+		// Encerrante at Start
+		private BigDecimal vEncIni;
+		// Encerrante at End
+		private BigDecimal vEncFin;
 
-		public ItNfeProdComb(Long id, Long cProdAnp, BigDecimal pMixGn,
-				Long codif, BigDecimal qTemp, String ufcons,
-				BigDecimal qBcprod, BigDecimal vAliqProd, BigDecimal vCide) {
+		public ItNfeProdComb(Long id, Long cProdAnp, BigDecimal pMixGn, Long codif, BigDecimal qTemp, String ufcons,
+				BigDecimal qBcprod, BigDecimal vAliqProd, BigDecimal vCide, String nBico, String nBomba, String nTanque,
+				BigDecimal vEncIni, BigDecimal vEncFin) {
 			this.id = id;
 			this.cProdAnp = cProdAnp;
 			this.pMixGn = pMixGn;
@@ -6269,6 +6414,11 @@ public class NfeCreateImport implements Serializable {
 			this.qBcprod = qBcprod;
 			this.vAliqProd = vAliqProd;
 			this.vCide = vCide;
+			this.nBico = nBico;
+			this.nBomba = nBomba;
+			this.nTanque = nTanque;
+			this.vEncIni = vEncIni;
+			this.vEncFin = vEncFin;
 		}
 
 		public ItNfeProdComb(JCoTable jcoParam) {
@@ -6347,6 +6497,46 @@ public class NfeCreateImport implements Serializable {
 			return this.vCide;
 		}
 
+		public void setNBico(String nBico) {
+			this.nBico = nBico;
+		}
+
+		public String getNBico() {
+			return this.nBico;
+		}
+
+		public void setNBomba(String nBomba) {
+			this.nBomba = nBomba;
+		}
+
+		public String getNBomba() {
+			return this.nBomba;
+		}
+
+		public void setNTanque(String nTanque) {
+			this.nTanque = nTanque;
+		}
+
+		public String getNTanque() {
+			return this.nTanque;
+		}
+
+		public void setVEncIni(BigDecimal vEncIni) {
+			this.vEncIni = vEncIni;
+		}
+
+		public BigDecimal getVEncIni() {
+			return this.vEncIni;
+		}
+
+		public void setVEncFin(BigDecimal vEncFin) {
+			this.vEncFin = vEncFin;
+		}
+
+		public BigDecimal getVEncFin() {
+			return this.vEncFin;
+		}
+
 		public void fillClassAttributes(JCoTable jcoParam) {
 			this.id = jcoParam.getLong("ID");
 			this.cProdAnp = jcoParam.getLong("C_PROD_ANP");
@@ -6357,6 +6547,11 @@ public class NfeCreateImport implements Serializable {
 			this.qBcprod = jcoParam.getBigDecimal("Q_BCPROD");
 			this.vAliqProd = jcoParam.getBigDecimal("V_ALIQ_PROD");
 			this.vCide = jcoParam.getBigDecimal("V_CIDE");
+			this.nBico = jcoParam.getString("N_BICO");
+			this.nBomba = jcoParam.getString("N_BOMBA");
+			this.nTanque = jcoParam.getString("N_TANQUE");
+			this.vEncIni = jcoParam.getBigDecimal("V_ENC_INI");
+			this.vEncFin = jcoParam.getBigDecimal("V_ENC_FIN");
 		}
 
 		public void fillJCoParameter(JCoTable jcoParam) {
@@ -6370,6 +6565,11 @@ public class NfeCreateImport implements Serializable {
 			jcoParam.setValue("Q_BCPROD", this.qBcprod);
 			jcoParam.setValue("V_ALIQ_PROD", this.vAliqProd);
 			jcoParam.setValue("V_CIDE", this.vCide);
+			jcoParam.setValue("N_BICO", this.nBico);
+			jcoParam.setValue("N_BOMBA", this.nBomba);
+			jcoParam.setValue("N_TANQUE", this.nTanque);
+			jcoParam.setValue("V_ENC_INI", this.vEncIni);
+			jcoParam.setValue("V_ENC_FIN", this.vEncFin);
 		}
 
 	}
@@ -6390,8 +6590,7 @@ public class NfeCreateImport implements Serializable {
 		// Item quantity actually exported
 		private BigDecimal qExport;
 
-		public ItNfeProdDetexport(Long id, Long seqNo, String nDraw, Long nRe,
-				String chNfe, BigDecimal qExport) {
+		public ItNfeProdDetexport(Long id, Long seqNo, String nDraw, Long nRe, String chNfe, BigDecimal qExport) {
 			this.id = id;
 			this.seqNo = seqNo;
 			this.nDraw = nDraw;
@@ -6505,10 +6704,9 @@ public class NfeCreateImport implements Serializable {
 		// Line ID of Table
 		private Long adiRef;
 
-		public ItNfeProdDi(Long id, Long seqNo, String nDi, Date dDi,
-				String xLocDesemb, String ufdesemb, Date dDesemb,
-				Long tpViaTransp, BigDecimal vAfrmm, Long tpIntermedio,
-				String cnpj, String ufterceiro, String cExportador, Long adiRef) {
+		public ItNfeProdDi(Long id, Long seqNo, String nDi, Date dDi, String xLocDesemb, String ufdesemb, Date dDesemb,
+				Long tpViaTransp, BigDecimal vAfrmm, Long tpIntermedio, String cnpj, String ufterceiro,
+				String cExportador, Long adiRef) {
 			this.id = id;
 			this.seqNo = seqNo;
 			this.nDi = nDi;
@@ -6696,8 +6894,8 @@ public class NfeCreateImport implements Serializable {
 		// Consumer Maximum Price
 		private BigDecimal vPmc;
 
-		public ItNfeProdMed(Long id, Long seqNo, String nLote,
-				BigDecimal qLote, Date dFab, Date dVal, BigDecimal vPmc) {
+		public ItNfeProdMed(Long id, Long seqNo, String nLote, BigDecimal qLote, Date dFab, Date dVal,
+				BigDecimal vPmc) {
 			this.id = id;
 			this.seqNo = seqNo;
 			this.nLote = nLote;
@@ -6890,13 +7088,10 @@ public class NfeCreateImport implements Serializable {
 		// Restriction
 		private Long tpRest;
 
-		public ItNfeProdVeicprod(Long id, Long tpOp, String chassi,
-				String cCor, String xCor, String pot, Long cilin, String pesoL,
-				String pesoB, String nSerie, String tpComb, String nMotor,
-				String cmt, String dist, Long anoMod, String anoFab,
-				String tpPint, Long tpVeic, String espVeic, String vin,
-				Long condVeic, String cMod, String cCorDenatran, Long lota,
-				Long tpRest) {
+		public ItNfeProdVeicprod(Long id, Long tpOp, String chassi, String cCor, String xCor, String pot, Long cilin,
+				String pesoL, String pesoB, String nSerie, String tpComb, String nMotor, String cmt, String dist,
+				Long anoMod, String anoFab, String tpPint, Long tpVeic, String espVeic, String vin, Long condVeic,
+				String cMod, String cCorDenatran, Long lota, Long tpRest) {
 			this.id = id;
 			this.tpOp = tpOp;
 			this.chassi = chassi;
@@ -7423,9 +7618,8 @@ public class NfeCreateImport implements Serializable {
 		// Reference to Line ID of Text Table
 		private Long textIdLacres;
 
-		public ItNfeVol(Long id, BigDecimal qVol, String esp, String marca,
-				String nVol, BigDecimal pesoL, BigDecimal pesoB,
-				Long textIdLacres) {
+		public ItNfeVol(Long id, BigDecimal qVol, String esp, String marca, String nVol, BigDecimal pesoL,
+				BigDecimal pesoB, Long textIdLacres) {
 			this.id = id;
 			this.qVol = qVol;
 			this.esp = esp;

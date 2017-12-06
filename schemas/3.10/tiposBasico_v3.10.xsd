@@ -385,6 +385,7 @@ acrescentado:
 			<xs:whiteSpace value="preserve"/>
 			<xs:enumeration value="132"/>
 			<xs:enumeration value="175"/>
+			<xs:enumeration value="200"/>
 			<xs:enumeration value="230"/>
 			<xs:enumeration value="310"/>
 			<xs:enumeration value="370"/>
@@ -413,6 +414,7 @@ acrescentado:
 			<xs:enumeration value="981"/>
 			<xs:enumeration value="0132"/>
 			<xs:enumeration value="0175"/>
+			<xs:enumeration value="0200"/>
 			<xs:enumeration value="0230"/>
 			<xs:enumeration value="0310"/>
 			<xs:enumeration value="0370"/>
@@ -836,7 +838,7 @@ acrescentado:
 			<xs:pattern value="[A-Z]{2,3}[0-9]{4}|[A-Z]{3,4}[0-9]{3}"/>
 		</xs:restriction>
 	</xs:simpleType>
-		<xs:simpleType name="TCOrgaoIBGE">
+	<xs:simpleType name="TCOrgaoIBGE">
 		<xs:annotation>
 			<xs:documentation>Tipo Código de orgão (UF da tabela do IBGE + 90 RFB)</xs:documentation>
 		</xs:annotation>

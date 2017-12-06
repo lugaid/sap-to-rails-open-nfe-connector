@@ -37,7 +37,7 @@ public class TNfeParser {
 
 			// Set encoding
 			jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-
+			
 			// Output formatted to log
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			StringWriter sw = new StringWriter();

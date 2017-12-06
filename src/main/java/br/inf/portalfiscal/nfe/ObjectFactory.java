@@ -2,7 +2,7 @@
 // Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.11 
 // Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2015.02.20 às 03:36:49 PM BRST 
+// Gerado em: 2016.06.23 às 03:41:44 PM BRT 
 //
 
 
@@ -329,6 +329,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TNFe.InfNFeSupl }
+     * 
+     */
+    public TNFe.InfNFeSupl createTNFeInfNFeSupl() {
+        return new TNFe.InfNFeSupl();
+    }
+
+    /**
      * Create an instance of {@link TNFe.InfNFe.Emit }
      * 
      */
@@ -526,6 +534,14 @@ public class ObjectFactory {
      */
     public TNFe.InfNFe.Det.Imposto.COFINSST createTNFeInfNFeDetImpostoCOFINSST() {
         return new TNFe.InfNFe.Det.Imposto.COFINSST();
+    }
+
+    /**
+     * Create an instance of {@link TNFe.InfNFe.Det.Imposto.ICMSUFDest }
+     * 
+     */
+    public TNFe.InfNFe.Det.Imposto.ICMSUFDest createTNFeInfNFeDetImpostoICMSUFDest() {
+        return new TNFe.InfNFe.Det.Imposto.ICMSUFDest();
     }
 
     /**
@@ -758,6 +774,14 @@ public class ObjectFactory {
      */
     public TNFe.InfNFe.Det.Prod.Comb.CIDE createTNFeInfNFeDetProdCombCIDE() {
         return new TNFe.InfNFe.Det.Prod.Comb.CIDE();
+    }
+
+    /**
+     * Create an instance of {@link TNFe.InfNFe.Det.Prod.Comb.Encerrante }
+     * 
+     */
+    public TNFe.InfNFe.Det.Prod.Comb.Encerrante createTNFeInfNFeDetProdCombEncerrante() {
+        return new TNFe.InfNFe.Det.Prod.Comb.Encerrante();
     }
 
     /**
